@@ -6,7 +6,7 @@ The library FSharpGephiStreamer provides functions suitable for use from F# scri
 Documentation
 =============
 
-The documentation for FSharpGephiStreamer library can be found [here.](http://muehlhaus.github.io/FSharpGephiStreamer/)
+The documentation for FSharpGephiStreamer library can be found [here.](http://CSBiology.github.io/FSharpGephiStreamer/)
 The documentation for this library is automatically generated (using the F# Formatting) from *.fsx and *.md files in the docs folder. If you find a typo, please submit a pull request!
 
 
