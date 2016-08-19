@@ -1,0 +1,25 @@
+type project
+title
+    FSharpGephiStreamer
+owners
+    Timo Mühlhaus
+authors 
+    Timo Mühlhaus
+projectUrl
+    https://github.com/CSBiology/FSharpGephiStreamer
+iconUrl
+    https://raw.githubusercontent.com/CSBiology/FSharpGephiStreamer/master/docs/files/img/logo.png
+licenseUrl
+    https://github.com/CSBiology/FSharpGephiStreamer/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2015
+tags
+    FSharp F# graph visualization GephiStreamer
+summary
+    FSharp functions for streaming graph to gephi graph visualization tool
+description
+    FSharp functions for streaming graph data to gephi a graph visualization tool
+
+
