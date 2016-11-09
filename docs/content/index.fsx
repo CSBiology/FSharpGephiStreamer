@@ -45,7 +45,7 @@ edgeList
                 
 
 (**
-![graph](./img/simpleGraph.gif)
+![graph](./img/SimpleGraph.gif)
 
 Update a node using `NodeConverter<'node>`: 
 
