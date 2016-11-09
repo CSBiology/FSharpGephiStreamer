@@ -1,5 +1,9 @@
 ﻿namespace FSharpGephiStreamer
 
+// https://github.com/gephi/gephi/wiki/GraphStreaming
+
+// https://github.com/graphstream/gs-gephi
+
 module Grammar =
 
     type Action = 
@@ -17,35 +21,48 @@ module Grammar =
         | Change -> "ce"
         | Delete -> "de"
 
-    // TODO: Include edgeDirection
+    type EdgeDirection =        
+        | Directed
+        | Undirected
+
+        static member convert = function
+            | Directed   -> true
+            | Undirected -> false
+
+        
+
+    // TODO: LabelSize ? LabelColor ? LabelVisible
     type Attribute =        
-        | Size         of int
+        | Size         of float
         | Color        of Colors.Color
+
+        | EdgeType     of EdgeDirection
 
         | PositionX    of float
         | PositionY    of float
         | PositionZ    of float
 
         | Label        of string 
-        | LabelSize    of float
-        | LabelColor   of Colors.Color
-        | LabelVisible of bool
+//        | LabelSize    of float
+//        | LabelColor   of Colors.Color
+//        | LabelVisible of bool
         
         | UserDef of string * obj
 
-    // TODO: Fix postition attributes
+
     let attibuteToJsonProperty = function         
         | Size            v -> JsonObject.newJprop "size"  v    
         | Color           v -> JsonObject.newJprop "color" (Colors.toWebColor v)
-        
+        | EdgeType        v -> JsonObject.newJprop "directed"  (EdgeDirection.convert v)
+
         | PositionX       v -> JsonObject.newJprop "x" v
         | PositionY       v -> JsonObject.newJprop "y" v
         | PositionZ       v -> JsonObject.newJprop "z" v
                           
         | Label           v -> JsonObject.newJprop "label" v
-        | LabelSize       v -> JsonObject.newJprop "label size" v
-        | LabelColor      v -> JsonObject.newJprop "label color" (Colors.toWebColor v)
-        | LabelVisible    v -> JsonObject.newJprop "label visible" v        
+//        | LabelSize       v -> JsonObject.newJprop "label size" v
+//        | LabelColor      v -> JsonObject.newJprop "LabelColor" (Colors.toWebColor v)
+//        | LabelVisible    v -> JsonObject.newJprop "Visible" v        
 
         | Attribute.UserDef (a,v)  -> JsonObject.newJprop a  v
 

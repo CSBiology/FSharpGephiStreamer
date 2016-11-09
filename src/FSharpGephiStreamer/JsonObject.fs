@@ -14,4 +14,7 @@ module JsonObject =
         new JObject(value) :> JToken
 
     let toStringSingleLine (j:JToken) =
-        j.ToString(Newtonsoft.Json.Formatting.None)
+        let tmp = j.ToString(Newtonsoft.Json.Formatting.None)
+        printfn "%s" tmp
+        tmp
+

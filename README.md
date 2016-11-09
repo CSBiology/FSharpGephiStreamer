@@ -3,6 +3,8 @@ FSharpGephiStreamer
 
 The library FSharpGephiStreamer provides functions suitable for use from F# scripting to stream graph data to [gephi.](https://gephi.org/) Gephi is the leading visualization and exploration software for all kinds of graphs and networks. Gephi is open-source and free
 
+![Demo](./img/gephiStreamingDemo.gif)
+
 Documentation
 =============
 

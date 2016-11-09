@@ -7,7 +7,7 @@
 FSharpGephiStreamer
 ===================
 
-The library FSharpGephiStreamer provides functions suitable for use from F# scripting to stream graph data to [gephi.](https://gephi.org/).
+The library FSharpGephiStreamer provides functions suitable for use from F# scripting to stream graph data to [gephi](https://gephi.org/).
 Gephi is the leading visualization and exploration software for all kinds of graphs and networks. Gephi is open-source and free.
 In order to use FSharpGephiStreamer functionality it is necessary to install gephi with the plugin [Graph Streaming](https://marketplace.gephi.org/plugin/graph-streaming/) installed and active in "Master mode". 
 
@@ -20,32 +20,58 @@ open FSharpGephiStreamer
 Quick use
 ---------
 
-The following example creates a combined point and line chart:
+The following example creates a simple graph:
 *)
 
-let nodeList = [1..5]
-let edgeList = [(1,2);(2,5);(1,4);(2,3)]
+let nodeList = 
+    [   1; 2; 3; 4; 5;  ]
 
-let nodeConverter nodeId =
-    [Grammar.Attribute.Label (string nodeId);]
+let edgeList = 
+    [   1,(1,2);
+        2,(2,5);
+        3,(1,4);
+        4,(2,3);    ]
 
-
-let edgeConverter edge =
-    [ Grammar.Attribute.Color Colors.Table.Office.yellow ;]
-
-let addNode node =
-    Streamer.addNode nodeConverter node node
-    |> ignore
-
-let addEdge id edge =
-    Streamer.addEdge edgeConverter id (fst edge) (snd edge) edge
-    |> ignore
 
 
 nodeList
-|> List.iter addNode 
+|> List.map (Streamer.addNodeBy string) 
 
 
 edgeList
-|> List.iteri addEdge
+|> List.map 
+    (Streamer.addEdgeBy (fun (edgeId,(sourceId,targetId)) -> 
+        string edgeId, string sourceId, string targetId ))
+                
+
+(**
+![graph](./img/simpleGraph.gif)
+
+Update a node using `NodeConverter<'node>`: 
+
+*)
+ 
+
+
+let nodeConverter nodeId =
+    [
+        Grammar.Attribute.Label (string nodeId);
+        Grammar.Attribute.Color Colors.Table.Office.blue;
+    ]
+
+nodeList
+|> List.map (fun n -> (Streamer.updateNode nodeConverter n) n  )
+
+
+
+(**
+![graph](./img/updateGraph.gif)
+
+
+*)
+
+
+
+
+
 

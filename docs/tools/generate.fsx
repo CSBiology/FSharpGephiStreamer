@@ -13,7 +13,7 @@ let referenceBinaries = []
 // Web site location for the generated documentation
 let website = "/FSharpGephiStreamer"
 
-let githubLink = "https://github.com/CSBiology/FSharpGephiStreamer.git/muehlhaus/FSharpGephiStreamer"
+let githubLink = "https://github.com/CSBiology/FSharpGephiStreamer.git"
 
 // Specify more information about your project
 let info =

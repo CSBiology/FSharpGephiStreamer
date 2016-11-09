@@ -6,9 +6,10 @@ module Streamer =
     open Grammar
     open FSharp.Net
 
-    /// 
+    /// Converter type to map from a custom node to a Grammar.Attribute list
     type NodeConverter<'node> = 'node -> Grammar.Attribute list
     
+    /// Converter type to map from a custom edge to a Grammar.Attribute list 
     type EdgeConverter<'edge> = 'edge -> Grammar.Attribute list
 
     
@@ -17,7 +18,7 @@ module Streamer =
     let getEnvirmonment () = envirmonmentURL    
         
 
-    // Adds a node
+    // Adds a node with NodeConverter
     let addNode (nodeConverter:NodeConverter<'node>) nodeId =
         let nodeId' = string nodeId
         (Either.tryCatch 
@@ -29,6 +30,18 @@ module Streamer =
             (fun _     -> Success nodeId' )
             (fun error -> Failure error )
 
+    // Adds a node 
+    let addNodeBy (f:'node -> string) =                
+        (Either.tryCatch 
+            (fun node ->  (jsonFormatNode Action.Add (f node) [Grammar.Attribute.Size 1.0]))
+            (fun exn -> Error.CreateJsonFailed exn.Message))
+        >> Either.bind (generatePostRequest (getEnvirmonment ()) )
+        >> Either.bind evalHttpResponseText
+        >> Either.either 
+            (fun s  -> Success s        )
+            (fun error -> Failure error )
+    
+    // Updates a node with NodeConverter
     let updateNode (nodeConverter:NodeConverter<'node>) nodeId =
         let nodeId' = string nodeId
         (Either.tryCatch 
@@ -64,6 +77,20 @@ module Streamer =
         >> Either.bind evalHttpResponseText
         >> Either.either 
             (fun _     -> Success edgeId' )
+            (fun error -> Failure error )
+
+    // Adds an edge given a function that maps from edge to edgeId*sourceId*targetId
+    let addEdgeBy (f:'edge -> string*string*string)  =
+        
+        (Either.tryCatch 
+            (fun (edge:'edge) -> 
+                let edgeId', sourceId', targetId' = f edge
+                (jsonFormatEdge Action.Add (string edgeId') (string sourceId') (string targetId') []))
+            (fun exn  -> Error.CreateJsonFailed exn.Message))
+        >> Either.bind (generatePostRequest (getEnvirmonment ()) )
+        >> Either.bind evalHttpResponseText
+        >> Either.either 
+            (fun s     -> Success s )
             (fun error -> Failure error )
 
 
