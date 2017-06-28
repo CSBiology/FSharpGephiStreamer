@@ -1,4 +1,4 @@
-#### 1.0.0 - November 09 2016
+#### 1.0.0 - June 28 2017
 * Full RestApi support
 
 #### 0.0.1 - August 19 2016
