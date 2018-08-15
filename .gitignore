@@ -184,4 +184,5 @@ docsrc/content/release-notes.md
 .fake
 docsrc/tools/FSharp.Formatting.svclog
 
-docsrc/
+docs/
+AssemblyInfo.fs
