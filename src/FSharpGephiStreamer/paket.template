@@ -1,4 +1,5 @@
-type project
+type file
+id FSharpGephiStreamer
 title
     FSharpGephiStreamer
 owners
@@ -13,13 +14,16 @@ licenseUrl
     https://github.com/CSBiology/FSharpGephiStreamer/blob/master/LICENSE.txt
 requireLicenseAcceptance
     false
+language
+    F#
 copyright
-    Copyright 2015
+    Copyright 2017
 tags
     FSharp F# graph visualization GephiStreamer
 summary
-    FSharp functions for streaming graph to gephi graph visualization tool
+    FSharp functions for streaming graph data to gephi a graph visualization tool
 description
     FSharp functions for streaming graph data to gephi a graph visualization tool
 
-
+files
+	../../bin/FSharpGephiStreamer ==> lib
