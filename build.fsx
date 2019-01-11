@@ -390,6 +390,27 @@ Target.create "Docs" (fun _ ->
 //#load "paket-files/fsharp/FAKE/modules/Octokit/Octokit.fsx"
 //open Octokit
 
+Target.create "ReleaseDocs" (fun _ ->
+    let tempDocsDir = "temp/gh-pages"
+    Shell.cleanDir tempDocsDir |> ignore
+    Git.Repository.cloneSingleBranch "" (gitHome + "/" + gitName + ".git") "gh-pages" tempDocsDir
+    Shell.copyRecursive "docs" tempDocsDir true |> printfn "%A"
+    Git.Staging.stageAll tempDocsDir
+    Git.Commit.exec tempDocsDir (sprintf "Update generated documentation for version %s" release.NugetVersion)
+    Git.Branches.push tempDocsDir
+)
+
+Target.create "ReleaseLocal" (fun _ ->
+    let tempDocsDir = "temp/gh-pages"
+    Shell.cleanDir tempDocsDir |> ignore
+    Shell.copyRecursive "docs" tempDocsDir true  |> printfn "%A"
+    Shell.replaceInFiles 
+        (seq {
+            yield "href=\"/" + project + "/","href=\""
+            yield "src=\"/" + project + "/","src=\""}) 
+        (Directory.EnumerateFiles tempDocsDir |> Seq.filter (fun x -> x.EndsWith(".html")))
+)
+
 Target.create "Release" (fun _ ->
     // not fully converted from  FAKE 4
 
@@ -482,5 +503,8 @@ Target.create "All" ignore
   ==> "RunTests"
   ==> "NuGet"
   ==> "GitReleaseNuget"
+
+"All"
+  ==> "ReleaseLocal"
 
 Target.runOrDefaultWithArguments "All"
