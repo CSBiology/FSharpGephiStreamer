@@ -375,13 +375,15 @@ Target.create "Docs" (fun _ ->
             | Some lang -> layoutRootsAll.[lang]
             | None -> layoutRootsAll.["en"] // "en" is the default language
 
-        FSFormatting.createDocs (fun args ->
+        createDocs (fun args ->
             { args with
                 Source = content
                 OutputDirectory = output
                 LayoutRoots = layoutRoots
                 ProjectParameters  = ("root", root)::info
-                Template = docTemplate } )
+                Template = docTemplate 
+                FsiEval = true
+                } )
 )
 
 // --------------------------------------------------------------------------------------
