@@ -6,16 +6,76 @@
 
 #load "./.fake/build.fsx/intellisense.fsx"
 
+
 open System.IO
 open Fake.Core
 open Fake.Core.TargetOperators
 open Fake.DotNet
 open Fake.IO
 open Fake.IO.FileSystemOperators
+open Fake.IO.Globbing
 open Fake.IO.Globbing.Operators
 open Fake.DotNet.Testing
 open Fake.Tools
 open Fake.Api
+open Fake.Tools.Git
+
+[<AutoOpen>]
+module TemporaryDocumentationHelpers =
+
+    type LiterateArguments =
+        { ToolPath : string
+          Source : string
+          OutputDirectory : string 
+          Template : string
+          ProjectParameters : (string * string) list
+          LayoutRoots : string list 
+          FsiEval : bool }
+
+
+    let private run toolPath command = 
+        if 0 <> Process.execSimple ((fun info ->
+                { info with
+                    FileName = toolPath
+                    Arguments = command }) >> Process.withFramework) System.TimeSpan.MaxValue
+
+        then failwithf "FSharp.Formatting %s failed." command
+
+    let createDocs p =
+        let toolPath = Tools.findToolInSubPath "fsformatting.exe" (Directory.GetCurrentDirectory() @@ "lib/Formatting")
+
+        let defaultLiterateArguments =
+            { ToolPath = toolPath
+              Source = ""
+              OutputDirectory = ""
+              Template = ""
+              ProjectParameters = []
+              LayoutRoots = [] 
+              FsiEval = false }
+
+        let arguments = (p:LiterateArguments->LiterateArguments) defaultLiterateArguments
+        let layoutroots =
+            if arguments.LayoutRoots.IsEmpty then []
+            else [ "--layoutRoots" ] @ arguments.LayoutRoots
+        let source = arguments.Source
+        let template = arguments.Template
+        let outputDir = arguments.OutputDirectory
+        let fsiEval = if arguments.FsiEval then [ "--fsieval" ] else []
+
+        let command = 
+            arguments.ProjectParameters
+            |> Seq.map (fun (k, v) -> [ k; v ])
+            |> Seq.concat
+            |> Seq.append 
+                   (["literate"; "--processdirectory" ] @ layoutroots @ [ "--inputdirectory"; source; "--templatefile"; template; 
+                      "--outputDirectory"; outputDir] @ fsiEval @ [ "--replacements" ])
+            |> Seq.map (fun s -> 
+                   if s.StartsWith "\"" then s
+                   else sprintf "\"%s\"" s)
+            |> String.separated " "
+        run arguments.ToolPath command
+        printfn "Successfully generated docs for %s" source
+
 
 // --------------------------------------------------------------------------------------
 // START TODO: Provide project-specific details below
@@ -43,7 +103,7 @@ let description = "FSharp functions for streaming graph data to gephi a graph vi
 let author = "Timo Mühlhaus"
 
 // Tags for your project (for NuGet package)
-let tags = "FSharp F# graph visualization GephiStreamer"
+let tags = "FSharp F# graph visualization GephiStreamer exploratory-data-analysis"
 
 // File system information
 let solutionFile  = "FSharpGephiStreamer.sln"
