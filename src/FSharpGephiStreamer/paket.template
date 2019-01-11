@@ -21,9 +21,9 @@ copyright
 tags
     FSharp F# graph visualization GephiStreamer
 summary
-    FSharp functions for streaming graph data to gephi a graph visualization tool
+    FSharp functions for streaming graph data to gephi
 description
-    FSharp functions for streaming graph data to gephi a graph visualization tool
+    FSharp functions for streaming graph data to gephi
 
 files
 	../../bin/FSharpGephiStreamer ==> lib
