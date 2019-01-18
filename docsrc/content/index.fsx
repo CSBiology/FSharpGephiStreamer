@@ -4,64 +4,101 @@
 #I "../../bin"
 
 (**
-FSharpGephiStreamer
-======================
-
-Documentation
-
-<div class="row">
-  <div class="span1"></div>
-  <div class="span6">
-    <div class="well well-small" id="nuget">
-      The FSharpGephiStreamer library can be <a href="https://nuget.org/packages/FSharpGephiStreamer">installed from NuGet</a>:
-      <pre>PM> Install-Package FSharpGephiStreamer</pre>
-    </div>
-  </div>
-  <div class="span1"></div>
-</div>
-
-Example
--------
-
-This example demonstrates using a function defined in this sample library.
-
+Streaming a graph to gephi 
+==========================
+[Gephi](https://gephi.org/) enables the visualization and exploration of all kinds of graphs and networks.
+The library FSharpGephiStreamer provides functions suitable for use from F# scripting to stream graph data 
+to [gephi](https://gephi.org/).
 *)
 #r "FSharpGephiStreamer.dll"
 open FSharpGephiStreamer
 
-printfn "hello = %i" <| Library.hello 0
+/// Record type that represents a custum node 
+type MyNode = {
+    Id    : int
+    Label : string
+    Size  : float
+    Data  : string
+    }
+
+/// Create a custum node
+let createMyNode id label size data =
+    {Id=id; Label=label; Size=size; Data=data};    
+
+
+type MyEdge = {
+    Id :     int
+    Source : int
+    Target : int
+    Weight : float    
+    }
+
+let createMyEdge id sourceId targetId weight =
+    {Id=id; Source=sourceId; Target=targetId; Weight=weight;};    
+
+
+
+let rnd = System.Random(42)
+
+/// Returns orange or blue otherwise
+let rndColor () = 
+    match rnd.NextDouble() with
+    | x when x <= 0.3 -> Colors.Table.Office.orange
+    | _ -> Colors.Table.Office.blue
+
+
+
+let addMyNode (node:MyNode) =
+
+    let nodeConverter (node:MyNode) =
+        [
+            Grammar.Attribute.Label node.Label; 
+            Grammar.Attribute.Size  node.Size; 
+            Grammar.Attribute.Color (rndColor ()); 
+            Grammar.Attribute.UserDef ("UserData",node.Data); 
+        ]
+
+    Streamer.addNode nodeConverter node.Id node
+
+
+
+let addMyEdge (edge:MyEdge) =
+
+    let edgeConverter (edge:MyEdge) =
+        [
+            Grammar.Attribute.Size  edge.Weight; 
+            Grammar.Attribute.EdgeType  Grammar.EdgeDirection.Undirected;             
+            Grammar.Attribute.Color Colors.Table.Office.grey ;      
+        ]
+    
+    Streamer.addEdge edgeConverter edge.Id edge.Source edge.Target edge
+
+
+
+let nodes =
+    [|0..10|] 
+    |> Array.map (fun id -> 
+                    createMyNode id (string id) (float ((2+id)*10)) "userdef.data")
+
+
+
+nodes
+|> Array.map addMyNode
+        
+
+for i=0 to 10 do
+    for ii=i+1 to 10 do        
+        let tmpedge = 
+            createMyEdge (i*i+ii) nodes.[i].Id nodes.[ii].Id 5.
+        if rnd.NextDouble() <= 0.3 then
+            addMyEdge tmpedge |> ignore
+
+
+
 
 (**
-Some more info
-
-Samples & documentation
------------------------
-
-The library comes with comprehensible documentation. 
-It can include tutorials automatically generated from `*.fsx` files in [the content folder][content]. 
-The API reference is automatically generated from Markdown comments in the library implementation.
-
- * [Tutorial](tutorial.html) contains a further explanation of this sample library.
-
- * [API Reference](reference/index.html) contains automatically generated documentation for all types, modules
-   and functions in the library. This includes additional brief samples on using most of the
-   functions.
- 
-Contributing and copyright
---------------------------
-
-The project is hosted on [GitHub][gh] where you can [report issues][issues], fork 
-the project and submit pull requests. If you're adding a new public API, please also 
-consider adding [samples][content] that can be turned into a documentation. You might
-also want to read the [library design notes][readme] to understand how it works.
-
-The library is available under Public Domain license, which allows modification and 
-redistribution for both commercial and non-commercial purposes. For more information see the 
-[License file][license] in the GitHub repository. 
-
-  [content]: https://github.com/fsprojects/FSharpGephiStreamer/tree/master/docs/content
-  [gh]: https://github.com/fsprojects/FSharpGephiStreamer
-  [issues]: https://github.com/fsprojects/FSharpGephiStreamer/issues
-  [readme]: https://github.com/fsprojects/FSharpGephiStreamer/blob/master/README.md
-  [license]: https://github.com/fsprojects/FSharpGephiStreamer/blob/master/LICENSE.txt
+![Demo](./img/gephiStreamingDemo.gif)
 *)
+
+
+Streamer.updateNode id 7 ([Grammar.Color Colors.Table.Office.red])
