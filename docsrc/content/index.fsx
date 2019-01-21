@@ -1,7 +1,7 @@
 (*** hide ***)
 // This block of code is omitted in the generated HTML documentation. Use 
 // it to define helpers that you do not want to show in the documentation.
-#I "../../bin"
+#I "../../bin/FSharpGephiStreamer/net47"
 
 (**
 Streaming a graph to gephi 
@@ -76,9 +76,9 @@ let addMyEdge (edge:MyEdge) =
 
 
 let nodes =
-    [|0..10|] 
+    [|0..1000|] 
     |> Array.map (fun id -> 
-                    createMyNode id (string id) (float ((2+id)*10)) "userdef.data")
+                    createMyNode id (string id) 10. "userdef.data")
 
 
 
@@ -86,8 +86,8 @@ nodes
 |> Array.map addMyNode
         
 
-for i=0 to 10 do
-    for ii=i+1 to 10 do        
+for i=0 to 1000 do
+    for ii=i+1 to 1000 do        
         let tmpedge = 
             createMyEdge (i*i+ii) nodes.[i].Id nodes.[ii].Id 5.
         if rnd.NextDouble() <= 0.3 then
@@ -101,4 +101,4 @@ for i=0 to 10 do
 *)
 
 
-Streamer.updateNode id 7 ([Grammar.Color Colors.Table.Office.red])
+Streamer.updateNode id 5 ([Grammar.Color Colors.Table.Office.darkYellow])
