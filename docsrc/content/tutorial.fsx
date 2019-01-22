@@ -75,30 +75,30 @@ let addMyEdge (edge:MyEdge) =
 
 
 
-let nodes =
-    [|0..1000|] 
-    |> Array.map (fun id -> 
-                    createMyNode id (string id) (10.) "userdef.data")
+//let nodes =
+//    [|0..1000|] 
+//    |> Array.map (fun id -> 
+//                    createMyNode id (string id) (10.) "userdef.data")
 
 
 
-nodes
-|> Array.map addMyNode
+//nodes
+//|> Array.map addMyNode
         
 
-for i=0 to 1000 do
-    for ii=i+1 to 1000 do        
-        let tmpedge = 
-            createMyEdge (i*i+ii) nodes.[i].Id nodes.[ii].Id 5.
-        if rnd.NextDouble() <= 0.3 then
-            addMyEdge tmpedge |> ignore
+//for i=0 to 1000 do
+//    for ii=i+1 to 1000 do        
+//        let tmpedge = 
+//            createMyEdge (i*i+ii) nodes.[i].Id nodes.[ii].Id 5.
+//        if rnd.NextDouble() <= 0.3 then
+//            addMyEdge tmpedge |> ignore
 
 
 
 
-(**
-![Demo](./img/gephiStreamingDemo.gif)
-*)
+//(**
+//![Demo](./img/gephiStreamingDemo.gif)
+//*)
 
 
-Streamer.updateNode id 7 ([Grammar.Color Colors.Table.Office.red])
+//Streamer.updateNode id 7 ([Grammar.Color Colors.Table.Office.red])

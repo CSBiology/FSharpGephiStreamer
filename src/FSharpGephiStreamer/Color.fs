@@ -29,6 +29,7 @@ module Hex =
 //        else new String(hex)
             
     [<CompiledName("Decode")>]
+    ///Decodes a color byte array from a hex string
     let decode (s:string) =
         match s with
         | null -> nullArg "s"
@@ -50,7 +51,7 @@ module Hex =
                 buf
 
 //http://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
-/// Represents an ARGB (alpha, red, green, blue) color
+///Module to create and manipulate ARGB colors
 module Colors =
     
     /// Color component ARGB
@@ -67,7 +68,7 @@ module Colors =
         | G v -> v
         | B v -> v
 
-    /// Color structure
+    ///Represents an ARGB (alpha, red, green, blue) color
     type Color = {
         /// The alpha component value of this Color structure.
         A : byte
@@ -255,5 +256,5 @@ module Colors =
                 |]
             
             let getRandomColor() =
-                let index = rand.Next(0,25)
+                let index = rand.Next(0,23)
                 paletteArray.[index]
