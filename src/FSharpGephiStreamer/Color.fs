@@ -4,17 +4,20 @@ module Hex =
     
     open System
 
+    ///Converts integer to hex based character (e.g. 1 -> '1', 11 -> 'B')
     [<CompiledName("ToHexDigit")>]
     let toHexDigit n =
         if n < 10 then char (n + 0x30) else char (n + 0x37)
     
+    ///Converts a hex based character to an integer (e.g. '1' -> 1, 'B' -> 11)
     [<CompiledName("FromHexDigit")>]
     let fromHexDigit c =
         if c >= '0' && c <= '9' then int c - int '0'
         elif c >= 'A' && c <= 'F' then (int c - int 'A') + 10
         elif c >= 'a' && c <= 'f' then (int c - int 'a') + 10
         else raise <| new ArgumentException()
-        
+    
+    ///Encodes a color byte array to a hex string with the given prefix 
     [<CompiledName("Encode")>]
     let encode (prefix:string) (color:byte array)  =
         let hex = Array.zeroCreate (color.Length * 2)
@@ -61,6 +64,7 @@ module Colors =
         | G of byte
         | B of byte 
     
+    /// returns the value hold by a color component
     let getValueFromCC cc =
         match cc with
         | A v -> v
@@ -80,18 +84,19 @@ module Colors =
         B : byte
         }
 
-    
+    ///returns the maximum value of the R, G, and B components of a color
     let maxRGB c =
         let r,g,b = R c.R,G c.G,B c.B
         max r g |> max b
 
+    ///returns the minimum value of the R, G, and B components of a color
     let minRGB c =
         let r,g,b = R c.R,G c.G,B c.B
         min r g |> min b
         
 
 
-    /// Creates a Color structure from the four ARGB component (alpha, red, green, and blue) values.
+    /// Creates a Color structure from the four ARGB components (alpha, red, green, and blue) values.
     let fromArgb a r g b =
         let f v =
             if v < 0 || v > 255 then 
@@ -100,7 +105,7 @@ module Colors =
                 byte v
         {A= f a; R = f r; G = f g; B = f b}
 
-    /// Creates a Color structure from the specified color values (red, green, and blue).
+    /// Creates a Color structure from the specified color component values (red, green, and blue).
     /// The alpha value is implicitly 255 (fully opaque). 
     let fromRgb r g b =
         fromArgb 255 r g b
@@ -108,7 +113,7 @@ module Colors =
 //    /// Gets the hue-saturation-brightness (HSB) brightness value for this Color structure.
 //    let getBrightness = ()
 
-    /// Gets the hue-saturation-brightness (HSB) hue value, in degrees, for this Color structure.
+    /// Gets the hue component value of the hue-saturation-brightness (HSB) format, in degrees, for this Color structure.
     let getHue c =
         let min = minRGB c |> getValueFromCC
         match maxRGB c with
@@ -118,7 +123,7 @@ module Colors =
         | _   -> failwithf "" // can't be
 
 
-    /// Gets the hue-saturation-brightness (HSB) saturation value for this Color structure.
+    /// Gets the saturation component value of the hue-saturation-brightness (HSB) format for this Color structure.
     let getSaturation col =
         let minimum = minRGB col
         let maximum = maxRGB col
@@ -160,6 +165,7 @@ module Colors =
     
     
     // http://graphicdesign.stackexchange.com/questions/3682/where-can-i-find-a-large-palette-set-of-contrasting-colors-for-coloring-many-d
+    ///Predefined colors
     module Table =    
 
         let black       = fromRgb   0   0   0                
@@ -198,6 +204,7 @@ module Colors =
 
         // From publication: Escaping RGBland: Selecting Colors for Statistical Graphics
         // http://epub.wu.ac.at/1692/1/document.pdf
+        ///Scientifically proven well distinguishable colors (http://epub.wu.ac.at/1692/1/document.pdf)
         module StatisticalGraphics24 =
         // 
             let Blue1       = fromRgb   2  63 165
