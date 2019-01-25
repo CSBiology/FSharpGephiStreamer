@@ -18,7 +18,7 @@ module Streamer =
     let getEnvirmonment () = envirmonmentURL    
         
 
-    // Adds a node with NodeConverter
+    /// Adds a node with NodeConverter
     let addNode (nodeConverter:NodeConverter<'node>) nodeId =
         let nodeId' = string nodeId
         (Either.tryCatch 
@@ -30,7 +30,7 @@ module Streamer =
             (fun _     -> Success nodeId' )
             (fun error -> Failure error )
 
-    // Adds a node 
+    /// Adds a node 
     let addNodeBy (f:'node -> string) =                
         (Either.tryCatch 
             (fun node ->  (jsonFormatNode Action.Add (f node) [Grammar.Attribute.Size 1.0]))
@@ -41,7 +41,7 @@ module Streamer =
             (fun s  -> Success s        )
             (fun error -> Failure error )
     
-    // Updates a node with NodeConverter
+    /// Updates a node with NodeConverter
     let updateNode (nodeConverter:NodeConverter<'node>) nodeId =
         let nodeId' = string nodeId
         (Either.tryCatch 
@@ -54,7 +54,7 @@ module Streamer =
             (fun error -> Failure error )
 
 
-    // Removes a node by nodeId
+    /// Removes a node by nodeId
     let removeNode nodeId =
         let nodeId' = string nodeId
         (Either.tryCatch 
@@ -67,7 +67,7 @@ module Streamer =
             (fun error -> Failure error )
 
 
-    // Adds an edge
+    /// Adds an edge
     let addEdge (edgeConverter:EdgeConverter<'edge>) edgeId sourceId targetId  =
         let edgeId', sourceId', targetId' = (string edgeId), (string sourceId), (string targetId)
         (Either.tryCatch 
@@ -79,7 +79,7 @@ module Streamer =
             (fun _     -> Success edgeId' )
             (fun error -> Failure error )
 
-    // Adds an edge given a function that maps from edge to edgeId*sourceId*targetId
+    /// Adds an edge given a function that maps from edge to edgeId*sourceId*targetId
     let addEdgeBy (f:'edge -> string*string*string)  =
         
         (Either.tryCatch 
@@ -108,7 +108,7 @@ module Streamer =
             (fun error -> Failure error )
 
 
-    // Removes an edge by edgeId
+    /// Removes an edge by edgeId
     let removeEdge edgeId  =
         let edgeId'= string edgeId
         (Either.tryCatch 
