@@ -198,7 +198,7 @@ to <a href="https://gephi.org/">gephi</a>.</p>
 <span class="c">//let nodes =</span>
 <span class="c">//    [|0..1000|] </span>
 <span class="c">//    |&gt; Array.map (fun id -&gt; </span>
-<span class="c">//                    createMyNode id (string id) 10. &quot;userdef.data&quot;)</span>
+<span class="c">//                    createMyNode id (string id) (10.) &quot;userdef.data&quot;)</span>
 
 
 
@@ -210,7 +210,7 @@ to <a href="https://gephi.org/">gephi</a>.</p>
 <span class="c">//    for ii=i+1 to 1000 do        </span>
 <span class="c">//        let tmpedge = </span>
 <span class="c">//            createMyEdge (i*i+ii) nodes.[i].Id nodes.[ii].Id 5.</span>
-<span class="c">//        if rnd.NextDouble() &lt;= 0.001 then</span>
+<span class="c">//        if rnd.NextDouble() &lt;= 0.3 then</span>
 <span class="c">//            addMyEdge tmpedge |&gt; ignore</span>
 
 
@@ -220,8 +220,8 @@ to <a href="https://gephi.org/">gephi</a>.</p>
 <span class="c">//![Demo](./img/gephiStreamingDemo.gif)</span>
 <span class="c">//*)</span>
 
-<span class="c">//for i=0 to 1000 do</span>
-<span class="c">//    Streamer.updateNode id i ([Grammar.Color (Colors.Table.StatisticalGraphics24.getRandomColor())]) |&gt; ignore</span>
+
+<span class="c">//Streamer.updateNode id 7 ([Grammar.Color Colors.Table.Office.red])</span>
 </code></pre></td>
 </tr>
 </table>

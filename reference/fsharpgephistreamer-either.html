@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8"/>
+<head>
+    <meta charset="utf-8" />
     <title>Either - FSharpGephiStreamer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content=""/>
-    <meta name="author" content="Timo Mühlhaus"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="Timo Mühlhaus" />
 
     <script src="https://code.jquery.com/jquery-1.8.0.js"></script>
     <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
     <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
-    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet"/>
-
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="/FSharpGephiStreamer/styles/CSBStyles.css" />
     <link type="text/css" rel="stylesheet" href="/FSharpGephiStreamer/content/style.css" />
     <script type="text/javascript" src="/FSharpGephiStreamer/content/tips.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <![endif]-->
-  </head>
+</head>
   <body>
     <div class="container">
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li><a href="http://fsharp.org">fsharp.org</a></li>
-          <li><a href="https://github.com/CSBiology/FSharpGephiStreamer.git">github page</a></li>
+          <li><a href="https://github.com/CSBiology/FSharpGephiStreamer">github page</a></li>
         </ul>
         <h3 class="muted"><a href="/FSharpGephiStreamer/index.html">FSharpGephiStreamer</a></h3>
       </div>
@@ -38,7 +38,7 @@
 <h1>Either</h1>
 <p>
   <span>Namespace: FSharpGephiStreamer</span><br />
-</p>
+  </p>
 <div class="xmldoc">
 </div>
 
@@ -53,219 +53,243 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '33', 33)" onmouseover="showTip(event, '33', 33)">
+          <code onmouseout="hideTip(event, '57', 57)" onmouseover="showTip(event, '57', 57)">
             ( &gt;=&gt; ) s1 s2
           </code>
-          <div class="tip" id="33">
-            <strong>Signature:</strong> s1:(&#39;?7317 -&gt; Either&lt;&#39;?7318,&#39;?7319&gt;) -&gt; s2:(&#39;?7318 -&gt; Either&lt;&#39;?7320,&#39;?7319&gt;) -&gt; &#39;?7317 -&gt; Either&lt;&#39;?7320,&#39;?7319&gt;<br />
-                          <strong>Type parameters:</strong> '?7317, '?7318, '?7319, '?7320          </div>
+          <div class="tip" id="57">
+            <strong>Signature:</strong> s1:(&#39;?8033 -&gt; Either&lt;&#39;?8034,&#39;?8035&gt;) -&gt; s2:(&#39;?8034 -&gt; Either&lt;&#39;?8036,&#39;?8035&gt;) -&gt; &#39;?8033 -&gt; Either&lt;&#39;?8036,&#39;?8035&gt;<br />
+                          <strong>Type parameters:</strong> '?8033, '?8034, '?8035, '?8036                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L35-35" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L35-35" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>compose two switches into another switch</p>
+
+
               <p>CompiledName: <code>op_GreaterEqualsGreater</code></p>
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '34', 34)" onmouseover="showTip(event, '34', 34)">
+          <code onmouseout="hideTip(event, '58', 58)" onmouseover="showTip(event, '58', 58)">
             ( &gt;&gt;= ) x f
           </code>
-          <div class="tip" id="34">
-            <strong>Signature:</strong> x:Either&lt;&#39;?7313,&#39;?7314&gt; -&gt; f:(&#39;?7313 -&gt; Either&lt;&#39;?7315,&#39;?7314&gt;) -&gt; Either&lt;&#39;?7315,&#39;?7314&gt;<br />
-                          <strong>Type parameters:</strong> '?7313, '?7314, '?7315          </div>
+          <div class="tip" id="58">
+            <strong>Signature:</strong> x:Either&lt;&#39;?8029,&#39;?8030&gt; -&gt; f:(&#39;?8029 -&gt; Either&lt;&#39;?8031,&#39;?8030&gt;) -&gt; Either&lt;&#39;?8031,&#39;?8030&gt;<br />
+                          <strong>Type parameters:</strong> '?8029, '?8030, '?8031                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L31-31" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L31-31" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>pipe a two-track value into a switch function</p>
+
+
               <p>CompiledName: <code>op_GreaterGreaterEquals</code></p>
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '35', 35)" onmouseover="showTip(event, '35', 35)">
+          <code onmouseout="hideTip(event, '59', 59)" onmouseover="showTip(event, '59', 59)">
             bind f
           </code>
-          <div class="tip" id="35">
+          <div class="tip" id="59">
             <strong>Signature:</strong> f:(&#39;a -&gt; Either&lt;&#39;b,&#39;c&gt;) -&gt; Either&lt;&#39;a,&#39;c&gt; -&gt; Either&lt;&#39;b,&#39;c&gt;<br />
-                          <strong>Type parameters:</strong> 'a, 'b, 'c          </div>
+                          <strong>Type parameters:</strong> 'a, 'b, 'c                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L27-27" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L27-27" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>convert a switch function into a two-track function</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '36', 36)" onmouseover="showTip(event, '36', 36)">
+          <code onmouseout="hideTip(event, '60', 60)" onmouseover="showTip(event, '60', 60)">
             doubleMap successFunc failureFunc
           </code>
-          <div class="tip" id="36">
-            <strong>Signature:</strong> successFunc:(&#39;?7336 -&gt; &#39;?7337) -&gt; failureFunc:(&#39;?7338 -&gt; &#39;?7339) -&gt; Either&lt;&#39;?7336,&#39;?7338&gt; -&gt; Either&lt;&#39;?7337,&#39;?7339&gt;<br />
-                          <strong>Type parameters:</strong> '?7336, '?7337, '?7338, '?7339          </div>
+          <div class="tip" id="60">
+            <strong>Signature:</strong> successFunc:(&#39;?8052 -&gt; &#39;?8053) -&gt; failureFunc:(&#39;?8054 -&gt; &#39;?8055) -&gt; Either&lt;&#39;?8052,&#39;?8054&gt; -&gt; Either&lt;&#39;?8053,&#39;?8055&gt;<br />
+                          <strong>Type parameters:</strong> '?8052, '?8053, '?8054, '?8055                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L58-58" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L58-58" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>convert two one-track functions into a two-track function</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '37', 37)" onmouseover="showTip(event, '37', 37)">
+          <code onmouseout="hideTip(event, '61', 61)" onmouseover="showTip(event, '61', 61)">
             either (...)
           </code>
-          <div class="tip" id="37">
+          <div class="tip" id="61">
             <strong>Signature:</strong> successFunc:(&#39;a -&gt; &#39;b) -&gt; failureFunc:(&#39;c -&gt; &#39;b) -&gt; twoTrackInput:Either&lt;&#39;a,&#39;c&gt; -&gt; &#39;b<br />
-                          <strong>Type parameters:</strong> 'a, 'b, 'c          </div>
+                          <strong>Type parameters:</strong> 'a, 'b, 'c                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L21-21" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L21-21" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>apply either a success function or failure function</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '38', 38)" onmouseover="showTip(event, '38', 38)">
+          <code onmouseout="hideTip(event, '62', 62)" onmouseover="showTip(event, '62', 62)">
             fail x
           </code>
-          <div class="tip" id="38">
+          <div class="tip" id="62">
             <strong>Signature:</strong> x:&#39;a -&gt; Either&lt;&#39;b,&#39;a&gt;<br />
-                          <strong>Type parameters:</strong> 'a, 'b          </div>
+                          <strong>Type parameters:</strong> 'a, 'b                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L17-17" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L17-17" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>convert a single value into a two-track result</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '39', 39)" onmouseover="showTip(event, '39', 39)">
+          <code onmouseout="hideTip(event, '63', 63)" onmouseover="showTip(event, '63', 63)">
             map f
           </code>
-          <div class="tip" id="39">
-            <strong>Signature:</strong> f:(&#39;?7326 -&gt; &#39;?7327) -&gt; Either&lt;&#39;?7326,&#39;?7328&gt; -&gt; Either&lt;&#39;?7327,&#39;?7328&gt;<br />
-                          <strong>Type parameters:</strong> '?7326, '?7327, '?7328          </div>
+          <div class="tip" id="63">
+            <strong>Signature:</strong> f:(&#39;?8042 -&gt; &#39;?8043) -&gt; Either&lt;&#39;?8042,&#39;?8044&gt; -&gt; Either&lt;&#39;?8043,&#39;?8044&gt;<br />
+                          <strong>Type parameters:</strong> '?8042, '?8043, '?8044                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L43-43" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L43-43" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>convert a one-track function into a two-track function</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '40', 40)" onmouseover="showTip(event, '40', 40)">
+          <code onmouseout="hideTip(event, '64', 64)" onmouseover="showTip(event, '64', 64)">
             plus (...)
           </code>
-          <div class="tip" id="40">
-            <strong>Signature:</strong> addSuccess:(&#39;?7341 -&gt; &#39;?7342 -&gt; &#39;?7343) -&gt; addFailure:(&#39;?7344 -&gt; &#39;?7344 -&gt; &#39;?7344) -&gt; switch1:(&#39;?7345 -&gt; Either&lt;&#39;?7341,&#39;?7344&gt;) -&gt; switch2:(&#39;?7345 -&gt; Either&lt;&#39;?7342,&#39;?7344&gt;) -&gt; x:&#39;?7345 -&gt; Either&lt;&#39;?7343,&#39;?7344&gt;<br />
-                          <strong>Type parameters:</strong> '?7341, '?7342, '?7343, '?7344, '?7345          </div>
+          <div class="tip" id="64">
+            <strong>Signature:</strong> addSuccess:(&#39;?8057 -&gt; &#39;?8058 -&gt; &#39;?8059) -&gt; addFailure:(&#39;?8060 -&gt; &#39;?8060 -&gt; &#39;?8060) -&gt; switch1:(&#39;?8061 -&gt; Either&lt;&#39;?8057,&#39;?8060&gt;) -&gt; switch2:(&#39;?8061 -&gt; Either&lt;&#39;?8058,&#39;?8060&gt;) -&gt; x:&#39;?8061 -&gt; Either&lt;&#39;?8059,&#39;?8060&gt;<br />
+                          <strong>Type parameters:</strong> '?8057, '?8058, '?8059, '?8060, '?8061                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L62-62" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L62-62" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>add two switches in parallel</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '41', 41)" onmouseover="showTip(event, '41', 41)">
+          <code onmouseout="hideTip(event, '65', 65)" onmouseover="showTip(event, '65', 65)">
             succeed x
           </code>
-          <div class="tip" id="41">
+          <div class="tip" id="65">
             <strong>Signature:</strong> x:&#39;a -&gt; Either&lt;&#39;a,&#39;b&gt;<br />
-                          <strong>Type parameters:</strong> 'a, 'b          </div>
+                          <strong>Type parameters:</strong> 'a, 'b                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L13-13" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L13-13" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>convert a single value into a two-track result</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '42', 42)" onmouseover="showTip(event, '42', 42)">
+          <code onmouseout="hideTip(event, '66', 66)" onmouseover="showTip(event, '66', 66)">
             switch f
           </code>
-          <div class="tip" id="42">
-            <strong>Signature:</strong> f:(&#39;?7322 -&gt; &#39;?7323) -&gt; &#39;?7322 -&gt; Either&lt;&#39;?7323,&#39;?7324&gt;<br />
-                          <strong>Type parameters:</strong> '?7322, '?7323, '?7324          </div>
+          <div class="tip" id="66">
+            <strong>Signature:</strong> f:(&#39;?8038 -&gt; &#39;?8039) -&gt; &#39;?8038 -&gt; Either&lt;&#39;?8039,&#39;?8040&gt;<br />
+                          <strong>Type parameters:</strong> '?8038, '?8039, '?8040                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L39-39" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L39-39" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>convert a one-track function into a switch</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '43', 43)" onmouseover="showTip(event, '43', 43)">
+          <code onmouseout="hideTip(event, '67', 67)" onmouseover="showTip(event, '67', 67)">
             tee f x
           </code>
-          <div class="tip" id="43">
-            <strong>Signature:</strong> f:(&#39;?7330 -&gt; unit) -&gt; x:&#39;?7330 -&gt; &#39;?7330<br />
-                          <strong>Type parameters:</strong> '?7330          </div>
+          <div class="tip" id="67">
+            <strong>Signature:</strong> f:(&#39;?8046 -&gt; unit) -&gt; x:&#39;?8046 -&gt; &#39;?8046<br />
+                          <strong>Type parameters:</strong> '?8046                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L47-47" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L47-47" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>convert a dead-end function into a one-track function</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '44', 44)" onmouseover="showTip(event, '44', 44)">
+          <code onmouseout="hideTip(event, '68', 68)" onmouseover="showTip(event, '68', 68)">
             tryCatch f exnHandler x
           </code>
-          <div class="tip" id="44">
+          <div class="tip" id="68">
             <strong>Signature:</strong> f:(&#39;a -&gt; &#39;b) -&gt; exnHandler:(exn -&gt; &#39;c) -&gt; x:&#39;a -&gt; Either&lt;&#39;b,&#39;c&gt;<br />
-                          <strong>Type parameters:</strong> 'a, 'b, 'c          </div>
+                          <strong>Type parameters:</strong> 'a, 'b, 'c                      </div>
         </td>
         <td class="xmldoc">
-            <a href="https://github.com/CSBiology/FSharpGephiStreamer.git/tree/master/src/FSharpGephiStreamer/Either.fs#L51-51" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Either.fs#L51-51" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>convert a one-track function into a switch with exception handling</p>
+
+
         </td>
       </tr>
     </tbody>
@@ -279,12 +303,19 @@
             <li><a href="/FSharpGephiStreamer/index.html">Home page</a></li>
             <li class="divider"></li>
             <li><a href="http://nuget.org/packages/FSharpGephiStreamer">Get Library via NuGet</a></li>
-            <li><a href="https://github.com/CSBiology/FSharpGephiStreamer.git">Source Code on GitHub</a></li>
+            <li><a href="https://github.com/CSBiology/FSharpGephiStreamer">Source Code on GitHub</a></li>
             <li><a href="/FSharpGephiStreamer/license.html">License</a></li>
             <li><a href="/FSharpGephiStreamer/release-notes.html">Release Notes</a></li>
-            
+
             <li class="nav-header">Getting started</li>
-            <li><a href="/FSharpGephiStreamer/tutorial.html">How to stream</a></li>
+            <li><a href="/FSharpGephiStreamer/InstallationInstructions.html">InstallationInstructions</a></li>
+
+            <li class="nav-header">Data preparation and streaming to Gephi</li>
+            <li><a href="/FSharpGephiStreamer/Grammar.html">Converting nodes and edges</a></li>
+            <li><a href="/FSharpGephiStreamer/Streaming.html">Streaming</a></li>
+
+            <li class="nav-header">Examples</li>
+            <li><a href="/FSharpGephiStreamer/exampleAnalysis.html">Sample tutorial</a></li>
 
             <li class="nav-header">Documentation</li>
             <li><a href="/FSharpGephiStreamer/reference/index.html">API Reference</a></li>
@@ -292,6 +323,6 @@
         </div>
       </div>
     </div>
-    <a href="https://github.com/CSBiology/FSharpGephiStreamer.git"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
+    <a href="https://github.com/CSBiology/FSharpGephiStreamer"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"/></a>
   </body>
   </html>
