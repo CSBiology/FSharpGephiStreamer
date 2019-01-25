@@ -28,7 +28,6 @@ _[Kevin Schneider](https://github.com/kMutagene)_
     * [The network](#The-network)
     * [Some metrics](#Some-metrics)
     * [Network sections](#Network-sections)
- * [Recap](#Recap)
 
 ## Introduction
 
@@ -87,19 +86,15 @@ Parsing the csv files can be done without dependencies using this code:
 (**
 ###Data aquisition
 
-First we parse the .obo file using BioFSharps Obo parse:
+First we parse the .obo file using BioFSharps Obo parser:
 
 *)
-
-
-
 
 open FSharpAux
 open FSharpAux.IO
 open BioFSharp
 open BioFSharp.IO
 open BioFSharp.IO.Obo
-
 
 let readFile path =
     FileIO.readFile path
@@ -113,9 +108,15 @@ let goObo = readFile @"go.obo"
 
 ### Preparing nodes and edges
 
-We define nodes as GO terms and Edges as Is-A relations between those terms. This will result in a network that shows how the knowledgebase is structured. 
-Maybe we can also infere from the network structure what the main fields of (geneomic) biological research are.
+We define nodes as GO terms as our nodes and edges as Is-A relations between those terms. This will result in a network that shows how the knowledgebase is structured. 
+There are a few interesting thigs that can be visualized by this:
 
+ * **The most descriptive terms**: The nodes with the highest In-Degree are the terms which describe the most knowledge in the network.
+  Maybe we can also infere from this what the main fields of (geneomic) biological research are.
+ * **Sub graphs of the network** may show that there are different well described knowledge types that are highly differentiaded from each other
+ * **Connectivity between hubs**: Terms that connect subgraphs or hubs and act as 'knowledge glue'
+
+However, there is much more information in the obi file than these relationships. Visualizing other relationships is a topic for another day.
 
 *)
 
@@ -135,8 +136,8 @@ type GONode = {
     Color           : Colors.Color
     }
 
-/// Creates OboNode
-let createOboNode id descr nameSpace col =
+/// Creates GONode
+let createGONode id descr nameSpace col =
     {Id = id; TermDescription = descr; NameSpace = nameSpace ; Color = col}
 
 /// Represents the Is_A relationship of GO terms as a directed edge
@@ -147,13 +148,14 @@ type GOEdge = {
     TargetColor : Colors.Color
 }
 
-let createOboEdge i source target tc = {Id = i; Source = source; Target = target; TargetColor = tc}
+/// Creates GOEdge
+let createGOEdge i source target tc = {Id = i; Source = source; Target = target; TargetColor = tc}
 
 
 ///Node list containing all GO terms
 let goNodes =
     goObo
-    |> List.map (fun x -> (createOboNode x.Id x.Name x.Namespace (Colors.Table.StatisticalGraphics24.getRandomColor())))
+    |> List.map (fun x -> (createGONode x.Id x.Name x.Namespace (Colors.Table.StatisticalGraphics24.getRandomColor())))
 
 
 ///Edge list containing all Is-A relationships in the knowledge base
@@ -165,12 +167,12 @@ let goEdges =
                             [for target in x.IsA do 
                                 yield ( x.Id, 
                                         target , 
-                                        //ensure edges have the color of the node they target
+                                        //ensure edges have the color of the node they target;
                                         (goNodes |> List.find(fun node -> node.Id = target) ).Color)
                                         ])
     //Aggregate resulting edges in a single list
     |> List.concat
-    |> List.mapi (fun i (sourceId, targetId, col) -> createOboEdge (i+1) sourceId targetId col)
+    |> List.mapi (fun i (sourceId, targetId, col) -> createGOEdge (i+1) sourceId targetId col)
 
 (** 
 ### Streaming to gephi
@@ -212,6 +214,10 @@ let addOboEdge (edge:GOEdge) =
 goNodes |> List.map addOboNode
 goEdges |> List.map addOboEdge
 
+(**
+Thats it. in roughly 40 lines of code we streamed a complete knowledge graph with 47345 nodes and 77187 edges to gephi. The network is now ready to be explored.
+
+*)
 
 (*** define:csvSample***)
 open System.IO
@@ -226,18 +232,16 @@ let nodes =
     readFromFile (__SOURCE_DIRECTORY__ + "/data/goNodeList.csv") 
     |> List.ofSeq
     |> List.map (fun n -> let tmp = n.Split([|','|])
-                          createOboNode tmp.[0] tmp.[1] tmp.[2] (Colors.Table.StatisticalGraphics24.getRandomColor()))
+                          createGONode tmp.[0] tmp.[1] tmp.[2] (Colors.Table.StatisticalGraphics24.getRandomColor()))
 
 let edges = 
     readFromFile (__SOURCE_DIRECTORY__ + "/data/goEdgeList.csv") |> List.ofSeq
     |> List.ofSeq
     |> List.map (fun n -> let tmp = n.Split([|','|])
-                          createOboEdge (tmp.[0] |> int) tmp.[1] tmp.[2] (nodes |> List.find(fun n -> n.Id = tmp.[2])).Color)
+                          createGOEdge (tmp.[0] |> int) tmp.[1] tmp.[2] (nodes |> List.find(fun n -> n.Id = tmp.[2])).Color)
 (**
 
 # Results
-
-
 
 ## The network
 
@@ -245,11 +249,9 @@ After applying some styles in the preview section (e.g. black background, rounde
 
 ![](./img/OboNetworkOverview.png)
 
-## Some metrics
-
-
-
 ## Network sections
+
+By eye, there are 9 large communities in the network, clustering knowledge about the following processes/entities (click to view a close-up):
 
 <img src="./img/OboNetworkMeta.png" usemap="#NetworkMap">
 <map name="NetworkMap">
@@ -264,6 +266,25 @@ After applying some styles in the preview section (e.g. black background, rounde
     <area target="" alt="Reproduction"              title="Reproduction"            href="#Reproduction"            coords="600,610,640,587,684,584,719,610,724,643,709,695,675,717,621,732,576,709,569,676,574,643" shape="poly">
     <area target="" alt="Transmembrane-Transport"   title="Transmembrane-Transport" href="#Transmembrane-Transport" coords="622,131,79" shape="circle">
 </map>
+
+## Metrics
+
+###Average Degree & Degree distribution
+
+![](./img/AverageDegree.jpg)
+
+The average Degree is 1.63. The degree distribution is highly right-skewed (meaning many nodes have a low degree, and there exist hubs with high degree). This is a property of a real network.
+
+###Modularity
+
+Calculating the network modularity with a low resolution, the large communities correlate well with the previous by-eye observation, although some of these communities split into large sub-communities:
+The overall modularity of the network with a resolution of 3 is 0.89 (high modularity). 
+
+Below is the network with nodes colored by their community membership:
+
+![](./img/Communities.png)
+
+# Close up of some communities
 
 ## Binding
 
