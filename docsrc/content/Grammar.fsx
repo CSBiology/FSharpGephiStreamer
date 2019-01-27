@@ -2,18 +2,17 @@
 // This block of code is omitted in the generated HTML documentation. Use 
 // it to define helpers that you do not want to show in the documentation.
 #I "../../bin/FSharpGephiStreamer/net47"
-
-(**
-Streaming a graph to gephi 
-==========================
-[Gephi](https://gephi.org/) enables the visualization and exploration of all kinds of graphs and networks.
-The library FSharpGephiStreamer provides functions suitable for use from F# scripting to stream graph data 
-to [gephi](https://gephi.org/).
-*)
 #r "FSharpGephiStreamer.dll"
 open FSharpGephiStreamer
+(**
+# Using FSharpGephiStreamer's `Grammar` module to prepare nodes and edges for streaming
 
-/// Record type that represents a custum node 
+The `Grammar` module provides a short set of semantics that allow the conversion of any node/edge type to gephi readable objects.
+
+Suppose you have the following types for your nodes and edges
+*)
+
+/// Record type that represents a custom node 
 type MyNode = {
     Id    : int
     Label : string
@@ -21,11 +20,7 @@ type MyNode = {
     Data  : string
     }
 
-/// Create a custum node
-let createMyNode id label size data =
-    {Id=id; Label=label; Size=size; Data=data};    
-
-
+/// Record type that represents a custom edge 
 type MyEdge = {
     Id :     int
     Source : int
@@ -33,72 +28,38 @@ type MyEdge = {
     Weight : float    
     }
 
-let createMyEdge id sourceId targetId weight =
-    {Id=id; Source=sourceId; Target=targetId; Weight=weight;};    
+(**
 
+The attributes currently supported are:
 
+ * Size         
+ * Color        
+ * EdgeType     
+ * PositionX    
+ * PositionY    
+ * PositionZ    
+ * Label        
+ * UserDef 
 
-let rnd = System.Random(42)
+This means you have full control over the size, position, color ,and labels of the graph. You could even use your own layout algorithms without being reliant on the ones implemented in gephi.
 
-/// Returns orange or blue otherwise
-let rndColor () = 
-    match rnd.NextDouble() with
-    | x when x <= 0.3 -> Colors.Table.Office.orange
-    | _ -> Colors.Table.Office.blue
+All you need is a converter function that returns a list of Grammar attributes. The following example does exactly that for 
+the label, size, color, and data of the `MyNode` type and the size, edge type, and color of the `MyEdge` type:
+*)
 
+///converts a MyNode type to a list of grammar attributes
+let nodeConverter (node:MyNode) =
+    [
+        Grammar.Attribute.Label node.Label; 
+        Grammar.Attribute.Size  node.Size; 
+        Grammar.Attribute.Color (Colors.Table.StatisticalGraphics24.getRandomColor()); 
+        Grammar.Attribute.UserDef ("UserData",node.Data); 
+    ]
 
-
-let addMyNode (node:MyNode) =
-
-    let nodeConverter (node:MyNode) =
-        [
-            Grammar.Attribute.Label node.Label; 
-            Grammar.Attribute.Size  node.Size; 
-            Grammar.Attribute.Color (rndColor ()); 
-            Grammar.Attribute.UserDef ("UserData",node.Data); 
-        ]
-
-    Streamer.addNode nodeConverter node.Id node
-
-
-
-let addMyEdge (edge:MyEdge) =
-
-    let edgeConverter (edge:MyEdge) =
-        [
-            Grammar.Attribute.Size  edge.Weight; 
-            Grammar.Attribute.EdgeType  Grammar.EdgeDirection.Undirected;             
-            Grammar.Attribute.Color Colors.Table.Office.grey ;      
-        ]
-    
-    Streamer.addEdge edgeConverter edge.Id edge.Source edge.Target edge
-
-
-
-//let nodes =
-//    [|0..1000|] 
-//    |> Array.map (fun id -> 
-//                    createMyNode id (string id) (10.) "userdef.data")
-
-
-
-//nodes
-//|> Array.map addMyNode
-        
-
-//for i=0 to 1000 do
-//    for ii=i+1 to 1000 do        
-//        let tmpedge = 
-//            createMyEdge (i*i+ii) nodes.[i].Id nodes.[ii].Id 5.
-//        if rnd.NextDouble() <= 0.3 then
-//            addMyEdge tmpedge |> ignore
-
-
-
-
-//(**
-//![Demo](./img/gephiStreamingDemo.gif)
-//*)
-
-
-//Streamer.updateNode id 7 ([Grammar.Color Colors.Table.Office.red])
+///converts a MyEdge type to a list of grammar attributes
+let edgeConverter (edge:MyEdge) =
+    [
+        Grammar.Attribute.Size  edge.Weight; 
+        Grammar.Attribute.EdgeType  Grammar.EdgeDirection.Undirected;             
+        Grammar.Attribute.Color Colors.Table.Office.grey ;      
+    ]
