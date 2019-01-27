@@ -4,101 +4,29 @@
 #I "../../bin/FSharpGephiStreamer/net47"
 
 (**
-Streaming a graph to gephi 
-==========================
-[Gephi](https://gephi.org/) enables the visualization and exploration of all kinds of graphs and networks.
-The library FSharpGephiStreamer provides functions suitable for use from F# scripting to stream graph data 
-to [gephi](https://gephi.org/).
+# FSharpGephiStreamer
+
+FSharpGephiStreamer is intended to close the gap between F# and the functionality of the [Gephi software project](https://gephi.org/), integrating network visualization
+power of gephi into any kind of data science workflow designed in F#. It leverages the functionality of the [graph streaming plugin](https://gephi.org/plugins/#/plugin/graphstreaming) of the It uses a short Grammar which makes it possible to convert any
+kind of Object to nodes and any kind of relationship between these objects to edges of a graph. This is especially useful because network 
+science is independent from specific data structures/types.
+
+![WorkflowOverview](./img/workflowOverview.png)
+
+# Ressources
+
+## Installation
+
+See how to [setup FSharpGephiStreamer](InstallationInstructions.html)
+
+## Docs
+
+ * See how to [convert any kind of nodes/edges](Grammar.html) to gephi readable objects using the `Grammar` module
+ * See how to [stream graph data to gephi](Streaming.html)
+ * Check out the [API Reference](/reference/index.html) for information about types/functions in this library
+
+## Examples
+
+ * [Exploratory analysis of the Gene Ontology knowledgebase](exampleAnalysis.html)
+
 *)
-#r "FSharpGephiStreamer.dll"
-open FSharpGephiStreamer
-
-/// Record type that represents a custum node 
-type MyNode = {
-    Id    : int
-    Label : string
-    Size  : float
-    Data  : string
-    }
-
-/// Create a custum node
-let createMyNode id label size data =
-    {Id=id; Label=label; Size=size; Data=data};    
-
-
-type MyEdge = {
-    Id :     int
-    Source : int
-    Target : int
-    Weight : float    
-    }
-
-let createMyEdge id sourceId targetId weight =
-    {Id=id; Source=sourceId; Target=targetId; Weight=weight;};    
-
-
-
-let rnd = System.Random(42)
-
-/// Returns orange or blue otherwise
-let rndColor () = 
-    match rnd.NextDouble() with
-    | x when x <= 0.3 -> Colors.Table.Office.orange
-    | _ -> Colors.Table.Office.blue
-
-
-
-let addMyNode (node:MyNode) =
-
-    let nodeConverter (node:MyNode) =
-        [
-            Grammar.Attribute.Label node.Label; 
-            Grammar.Attribute.Size  node.Size; 
-            Grammar.Attribute.Color (rndColor ()); 
-            Grammar.Attribute.UserDef ("UserData",node.Data); 
-        ]
-
-    Streamer.addNode nodeConverter node.Id node
-
-
-
-let addMyEdge (edge:MyEdge) =
-
-    let edgeConverter (edge:MyEdge) =
-        [
-            Grammar.Attribute.Size  edge.Weight; 
-            Grammar.Attribute.EdgeType  Grammar.EdgeDirection.Undirected;             
-            Grammar.Attribute.Color Colors.Table.Office.grey ;      
-        ]
-    
-    Streamer.addEdge edgeConverter edge.Id edge.Source edge.Target edge
-
-
-
-//let nodes =
-//    [|0..1000|] 
-//    |> Array.map (fun id -> 
-//                    createMyNode id (string id) 10. "userdef.data")
-
-
-
-//nodes
-//|> Array.map addMyNode
-        
-
-//for i=0 to 1000 do
-//    for ii=i+1 to 1000 do        
-//        let tmpedge = 
-//            createMyEdge (i*i+ii) nodes.[i].Id nodes.[ii].Id 5.
-//        if rnd.NextDouble() <= 0.001 then
-//            addMyEdge tmpedge |> ignore
-
-
-
-
-//(**
-//![Demo](./img/gephiStreamingDemo.gif)
-//*)
-
-//for i=0 to 1000 do
-//    Streamer.updateNode id i ([Grammar.Color (Colors.Table.StatisticalGraphics24.getRandomColor())]) |> ignore

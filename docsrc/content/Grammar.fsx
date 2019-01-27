@@ -5,7 +5,7 @@
 #r "FSharpGephiStreamer.dll"
 open FSharpGephiStreamer
 (**
-# Using FSharpGephiStreamer's `Grammar` module to prepare nodes and edges for streaming
+# Using FSharpGephiStreamer's Grammar module to prepare nodes and edges for streaming
 
 The `Grammar` module provides a short set of semantics that allow the conversion of any node/edge type to gephi readable objects.
 
