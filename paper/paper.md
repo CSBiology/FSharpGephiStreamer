@@ -11,7 +11,7 @@ authors:
   - name: Kevin Schneider
     orcid: 0000-0002-2198-5262
     affiliation: 1
-  - name: Timo Mühlhaus
+  - name: Timo MÃ¼hlhaus
     orcid: 0000-0003-3925-6778
     affiliation: 1
 affiliations:
@@ -26,7 +26,7 @@ bibliography: paper.bib
 Network science empowers researcher across different disciplines to study complex
 relationships between a huge number of elements and reveal the underling wiring
 diagram of a system. Therefore, network visualization tools have become a very
-important component in various data analysis workflows [@Barabási2011]. ``Gephi`` is an
+important component in various data analysis workflows [@Barabasi2011]. ``Gephi`` is an
 open source software for explorative analysis and visualization of large-scale networks.
 It facilitates real-time visualizations and analysis to improve the exploratory process
 by high quality layout algorithms and intuitive user interface [@ICWSM09154].
