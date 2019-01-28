@@ -93,11 +93,11 @@ let project = "FSharpGephiStreamer"
 
 // Short summary of the project
 // (used as description in AssemblyInfo and as a short summary for NuGet package)
-let summary = "FSharp functions for streaming graph data to gephi a graph visualization tool"
+let summary = "F# functions for streaming any kind of graph/network data to the network visualization tool gephi"
 
 // Longer description of the project
 // (used as a description for NuGet package; line breaks are automatically cleaned up)
-let description = "FSharp functions for streaming graph data to gephi a graph visualization tool"
+let description = "F# functions for streaming any kind of graph/network data to the network visualization tool gephi"
 
 // List of author names (for NuGet package)
 let author = "Timo Mühlhaus"

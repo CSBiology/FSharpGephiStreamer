@@ -22,6 +22,8 @@ The following steps are necessary to stream graph data from F# interactive to ge
 
  4. Enable the master server (default settings:)
 
+![](./img/gephiStreamingServer.gif)
+
 If you want to use another connection than the default connection, you can use the `Streamer.setEnvironment` function to do so:
 *)
 
