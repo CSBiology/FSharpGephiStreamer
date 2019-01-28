@@ -1,7 +1,7 @@
 namespace FSharpGephiStreamer
 
 
-/// the two-track type
+/// Two-track return type for railway oriented programming
 type Either<'TSuccess,'TFailure> = 
     | Success of 'TSuccess
     | Failure of 'TFailure

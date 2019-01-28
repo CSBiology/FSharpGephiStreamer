@@ -4,23 +4,28 @@
 
 // https://github.com/graphstream/gs-gephi
 
+///Semantics and mappings to represent Gephi interpretable Attributes of Nodes and Edges
 module Grammar =
 
+    ///Action performed on the Gephi graph
     type Action = 
         | Add    
         | Change 
         | Delete 
 
+    ///Node action performed on the Gephi graph
     let formatNodeAction= function
         | Add    -> "an"
         | Change -> "cn"
         | Delete -> "dn"
     
+    ///Edge action performed on the Gephi graph
     let formatEdgeAction= function
         | Add    -> "ae"
         | Change -> "ce"
         | Delete -> "de"
 
+    ///Direction of an edge
     type EdgeDirection =        
         | Directed
         | Undirected
@@ -32,6 +37,7 @@ module Grammar =
         
 
     // TODO: LabelSize ? LabelColor ? LabelVisible
+    ///Common attributes of nodes and edges
     type Attribute =        
         | Size         of float
         | Color        of Colors.Color
@@ -49,7 +55,7 @@ module Grammar =
         
         | UserDef of string * obj
 
-
+    ///converts an attribute to a JSON token
     let attibuteToJsonProperty = function         
         | Size            v -> JsonObject.newJprop "size"  v    
         | Color           v -> JsonObject.newJprop "color" (Colors.toWebColor v)
@@ -67,7 +73,7 @@ module Grammar =
         | Attribute.UserDef (a,v)  -> JsonObject.newJprop a  v
 
 
-    /// Returns json string for a node
+    /// Returns a properly formatted JSON string for a node
     //{"an":{"1":{"label":"Test label","size": 50}}}
     let jsonFormatNode (action:Action) nodeId (attributes:Attribute list) =
          let jsonAttributes = attributes |> List.map attibuteToJsonProperty
@@ -81,7 +87,7 @@ module Grammar =
 
 
 
-    /// Returns json string for an edge
+    /// Returns a properly formatted JSON string for an edge
     //"""{"ae":{"2":{"source":0,"target":1,"directed":true}}}"""
     let jsonFormatEdge (action:Action) edgeId sourceId targetId (attributes:Attribute list) =
          let jsonAttributes =         

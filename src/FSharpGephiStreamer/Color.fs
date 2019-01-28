@@ -1,5 +1,6 @@
 ﻿namespace FSharpGephiStreamer
 
+///Functions and types for color coding, decoding and conversions of hex colors
 module Hex =
     
     open System
