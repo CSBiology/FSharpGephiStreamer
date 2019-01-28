@@ -1,6 +1,8 @@
 FSharpGephiStreamer
 ===================
 
+[![NuGet Badge](https://buildstats.info/nuget/FSharpGephiStreamer)](https://www.nuget.org/packages/FSharpGephiStreamer/)
+
 F# functions for streaming any kind of graph/network data to the network visualization tool [gephi.](https://gephi.org/) <https://csbiology.github.io/FSharpGephiStreamer/>
 
 |Branch|Ubuntu(trusty)|Windows|
