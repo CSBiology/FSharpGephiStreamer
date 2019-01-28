@@ -40,6 +40,8 @@
   <span>Namespace: FSharpGephiStreamer</span><br />
   </p>
 <div class="xmldoc">
+<p>Helper functions for requests to the Streamer server on the Gephi side</p>
+
 </div>
 
 <!-- Render nested types and modules, if there are any -->
@@ -55,7 +57,9 @@
             <a href="fsharpgephistreamer-restfulaux-error.html">Error</a>
           </td>
           <td class="xmldoc">
-          
+          <p>Represents error messages returned on error from the streamer server</p>
+
+
           </td>
         </tr>
     </tbody>
@@ -72,11 +76,31 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '73', 73)" onmouseover="showTip(event, '73', 73)">
+          <code onmouseout="hideTip(event, '78', 78)" onmouseover="showTip(event, '78', 78)">
             evalHttpResponseText response
           </code>
-          <div class="tip" id="73">
+          <div class="tip" id="78">
             <strong>Signature:</strong> response:HttpResponse -&gt; Either&lt;string,Error&gt;<br />
+                                  </div>
+        </td>
+        <td class="xmldoc">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/RestFulAux.fs#L43-43" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Evaluates a http request to the streamer server. Handles errors without exceptions by returning the Error type instead of throwing an exception.</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '79', 79)" onmouseover="showTip(event, '79', 79)">
+            generateDelRequest 
+          </code>
+          <div class="tip" id="79">
+            <strong>Signature:</strong> string -&gt; Either&lt;HttpResponse,Error&gt;<br />
                                   </div>
         </td>
         <td class="xmldoc">
@@ -84,17 +108,59 @@
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>Generates an error-handled DELETE request</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '74', 74)" onmouseover="showTip(event, '74', 74)">
-            generateDelRequest 
+          <code onmouseout="hideTip(event, '80', 80)" onmouseover="showTip(event, '80', 80)">
+            generateGetRequest 
           </code>
-          <div class="tip" id="74">
+          <div class="tip" id="80">
             <strong>Signature:</strong> string -&gt; Either&lt;HttpResponse,Error&gt;<br />
+                                  </div>
+        </td>
+        <td class="xmldoc">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/RestFulAux.fs#L18-18" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Generates an error-handled GET request</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '81', 81)" onmouseover="showTip(event, '81', 81)">
+            generatePostRequest urlString
+          </code>
+          <div class="tip" id="81">
+            <strong>Signature:</strong> urlString:string -&gt; string -&gt; Either&lt;HttpResponse,Error&gt;<br />
+                                  </div>
+        </td>
+        <td class="xmldoc">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/RestFulAux.fs#L24-24" class="github-link">
+              <img src="../content/img/github.png" class="normal" />
+              <img src="../content/img/github-blue.png" class="hover" />
+            </a>
+          <p>Generates an error-handled POST request</p>
+
+
+        </td>
+      </tr>
+      <tr>
+        <td class="member-name">
+
+          <code onmouseout="hideTip(event, '82', 82)" onmouseover="showTip(event, '82', 82)">
+            generatePutRequest urlString
+          </code>
+          <div class="tip" id="82">
+            <strong>Signature:</strong> urlString:string -&gt; string -&gt; Either&lt;HttpResponse,Error&gt;<br />
                                   </div>
         </td>
         <td class="xmldoc">
@@ -102,61 +168,9 @@
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
+          <p>Generates an error-handled PUT request</p>
 
-          <code onmouseout="hideTip(event, '75', 75)" onmouseover="showTip(event, '75', 75)">
-            generateGetRequest 
-          </code>
-          <div class="tip" id="75">
-            <strong>Signature:</strong> string -&gt; Either&lt;HttpResponse,Error&gt;<br />
-                                  </div>
-        </td>
-        <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/RestFulAux.fs#L15-15" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
 
-          <code onmouseout="hideTip(event, '76', 76)" onmouseover="showTip(event, '76', 76)">
-            generatePostRequest urlString
-          </code>
-          <div class="tip" id="76">
-            <strong>Signature:</strong> urlString:string -&gt; string -&gt; Either&lt;HttpResponse,Error&gt;<br />
-                                  </div>
-        </td>
-        <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/RestFulAux.fs#L20-20" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          
-        </td>
-      </tr>
-      <tr>
-        <td class="member-name">
-
-          <code onmouseout="hideTip(event, '77', 77)" onmouseover="showTip(event, '77', 77)">
-            generatePutRequest urlString
-          </code>
-          <div class="tip" id="77">
-            <strong>Signature:</strong> urlString:string -&gt; string -&gt; Either&lt;HttpResponse,Error&gt;<br />
-                                  </div>
-        </td>
-        <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/RestFulAux.fs#L25-25" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
-            </a>
-          
         </td>
       </tr>
     </tbody>
@@ -182,7 +196,7 @@
             <li><a href="/FSharpGephiStreamer/Streaming.html">Streaming</a></li>
 
             <li class="nav-header">Examples</li>
-            <li><a href="/FSharpGephiStreamer/exampleAnalysis.html">Sample tutorial</a></li>
+            <li><a href="/FSharpGephiStreamer/exampleAnalysis.html">Exploratory analysis of the Gene Ontology knowledgebase</a></li>
 
             <li class="nav-header">Documentation</li>
             <li><a href="/FSharpGephiStreamer/reference/index.html">API Reference</a></li>

@@ -84,19 +84,19 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '78', 78)" onmouseover="showTip(event, '78', 78)">
+          <code onmouseout="hideTip(event, '83', 83)" onmouseover="showTip(event, '83', 83)">
             addEdge (...)
           </code>
-          <div class="tip" id="78">
+          <div class="tip" id="83">
             <strong>Signature:</strong> edgeConverter:EdgeConverter&lt;&#39;edge&gt; -&gt; edgeId:obj -&gt; sourceId:obj -&gt; targetId:obj -&gt; &#39;edge -&gt; Either&lt;string,Error&gt;<br />
                           <strong>Type parameters:</strong> 'edge                      </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L71-71" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L74-74" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>Adds an edge</p>
+          <p>Adds an edge to the gephi graph using the given node converters grammar attribute mapping</p>
 
 
         </td>
@@ -104,19 +104,19 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '79', 79)" onmouseover="showTip(event, '79', 79)">
+          <code onmouseout="hideTip(event, '84', 84)" onmouseover="showTip(event, '84', 84)">
             addEdgeBy f
           </code>
-          <div class="tip" id="79">
+          <div class="tip" id="84">
             <strong>Signature:</strong> f:(&#39;edge -&gt; string * string * string) -&gt; &#39;edge -&gt; Either&lt;string,Error&gt;<br />
                           <strong>Type parameters:</strong> 'edge                      </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L83-83" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L86-86" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>Adds an edge given a function that maps from edge to edgeId<em>sourceId</em>targetId</p>
+          <p>Adds an edge given a mapping from edge to (edgeId<em>sourceId</em>targetId)</p>
 
 
         </td>
@@ -124,19 +124,19 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '80', 80)" onmouseover="showTip(event, '80', 80)">
+          <code onmouseout="hideTip(event, '85', 85)" onmouseover="showTip(event, '85', 85)">
             addNode nodeConverter nodeId
           </code>
-          <div class="tip" id="80">
+          <div class="tip" id="85">
             <strong>Signature:</strong> nodeConverter:NodeConverter&lt;&#39;node&gt; -&gt; nodeId:obj -&gt; &#39;node -&gt; Either&lt;string,Error&gt;<br />
                           <strong>Type parameters:</strong> 'node                      </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L22-22" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L25-25" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>Adds a node with NodeConverter</p>
+          <p>Adds a node to the gephi graph using the given node converters grammar attribute mapping</p>
 
 
         </td>
@@ -144,19 +144,19 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '81', 81)" onmouseover="showTip(event, '81', 81)">
+          <code onmouseout="hideTip(event, '86', 86)" onmouseover="showTip(event, '86', 86)">
             addNodeBy f
           </code>
-          <div class="tip" id="81">
+          <div class="tip" id="86">
             <strong>Signature:</strong> f:(&#39;node -&gt; string) -&gt; &#39;node -&gt; Either&lt;string,Error&gt;<br />
                           <strong>Type parameters:</strong> 'node                      </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L34-34" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L37-37" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>Adds a node</p>
+          <p>Adds a node to the gephi graph given an id mapping (node -&gt; nodeId)</p>
 
 
         </td>
@@ -164,33 +164,35 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '82', 82)" onmouseover="showTip(event, '82', 82)">
+          <code onmouseout="hideTip(event, '87', 87)" onmouseover="showTip(event, '87', 87)">
             getEnvirmonment ()
           </code>
-          <div class="tip" id="82">
+          <div class="tip" id="87">
             <strong>Signature:</strong> unit -&gt; string<br />
                                   </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L18-18" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L21-21" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>returns the url of the current target streamer server</p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '83', 83)" onmouseover="showTip(event, '83', 83)">
+          <code onmouseout="hideTip(event, '88', 88)" onmouseover="showTip(event, '88', 88)">
             removeEdge edgeId
           </code>
-          <div class="tip" id="83">
+          <div class="tip" id="88">
             <strong>Signature:</strong> edgeId:obj -&gt; &#39;edge -&gt; Either&lt;string,Error&gt;<br />
                           <strong>Type parameters:</strong> 'edge                      </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L112-112" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L115-115" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
@@ -202,15 +204,15 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '84', 84)" onmouseover="showTip(event, '84', 84)">
+          <code onmouseout="hideTip(event, '89', 89)" onmouseover="showTip(event, '89', 89)">
             removeNode nodeId
           </code>
-          <div class="tip" id="84">
+          <div class="tip" id="89">
             <strong>Signature:</strong> nodeId:obj -&gt; &#39;node -&gt; Either&lt;string,Error&gt;<br />
                           <strong>Type parameters:</strong> 'node                      </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L58-58" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L61-61" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
@@ -222,37 +224,39 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '85', 85)" onmouseover="showTip(event, '85', 85)">
+          <code onmouseout="hideTip(event, '90', 90)" onmouseover="showTip(event, '90', 90)">
             setEnvirmonment ip port workspace
           </code>
-          <div class="tip" id="85">
+          <div class="tip" id="90">
             <strong>Signature:</strong> ip:string -&gt; port:int -&gt; workspace:string -&gt; unit<br />
                                   </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L17-17" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L18-18" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          
+          <p>change the url of the target streamer server (default:"<a href="http://localhost:8080/workspace1?operation=updateGraph")">http://localhost:8080/workspace1?operation=updateGraph")</a></p>
+
+
         </td>
       </tr>
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '86', 86)" onmouseover="showTip(event, '86', 86)">
+          <code onmouseout="hideTip(event, '91', 91)" onmouseover="showTip(event, '91', 91)">
             updateEdge (...)
           </code>
-          <div class="tip" id="86">
+          <div class="tip" id="91">
             <strong>Signature:</strong> edgeConverter:EdgeConverter&lt;&#39;edge&gt; -&gt; edgeId:obj -&gt; sourceId:obj -&gt; targetId:obj -&gt; &#39;edge -&gt; Either&lt;string,Error&gt;<br />
                           <strong>Type parameters:</strong> 'edge                      </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L99-99" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L102-102" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>Update edge (source and targe are immutable)</p>
+          <p>Update edge (source and target are immutable)</p>
 
 
         </td>
@@ -260,19 +264,19 @@
       <tr>
         <td class="member-name">
 
-          <code onmouseout="hideTip(event, '87', 87)" onmouseover="showTip(event, '87', 87)">
+          <code onmouseout="hideTip(event, '92', 92)" onmouseover="showTip(event, '92', 92)">
             updateNode nodeConverter nodeId
           </code>
-          <div class="tip" id="87">
+          <div class="tip" id="92">
             <strong>Signature:</strong> nodeConverter:NodeConverter&lt;&#39;node&gt; -&gt; nodeId:obj -&gt; &#39;node -&gt; Either&lt;string,Error&gt;<br />
                           <strong>Type parameters:</strong> 'node                      </div>
         </td>
         <td class="xmldoc">
-                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L45-45" class="github-link">
+                      <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/src/FSharpGephiStreamer/Streamer.fs#L48-48" class="github-link">
               <img src="../content/img/github.png" class="normal" />
               <img src="../content/img/github-blue.png" class="hover" />
             </a>
-          <p>Updates a node with NodeConverter</p>
+          <p>Updates a node on the gephi graph using the given node converters grammar attribute mapping</p>
 
 
         </td>
@@ -300,7 +304,7 @@
             <li><a href="/FSharpGephiStreamer/Streaming.html">Streaming</a></li>
 
             <li class="nav-header">Examples</li>
-            <li><a href="/FSharpGephiStreamer/exampleAnalysis.html">Sample tutorial</a></li>
+            <li><a href="/FSharpGephiStreamer/exampleAnalysis.html">Exploratory analysis of the Gene Ontology knowledgebase</a></li>
 
             <li class="nav-header">Documentation</li>
             <li><a href="/FSharpGephiStreamer/reference/index.html">API Reference</a></li>
