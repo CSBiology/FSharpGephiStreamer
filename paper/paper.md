@@ -21,7 +21,7 @@ date: 28 January 2019
 bibliography: paper.bib
 ---
 
-# Statement of need
+# Summary
 
 Network science empowers researcher across different disciplines to study complex
 relationships between a huge number of elements and reveal the underling wiring
@@ -40,8 +40,6 @@ type save information-rich programming and domain driven explorative programming
 [@inforich-ddfp]. This enables data collection, processing and analysis
 tasks leveraging the flexibility of the programming environments.
 
-# Summary
-
 We created ``FSharpGephiStreamer`` to enable automated access to the ``Gephi`` network and 
 visualization models directly from within the F# interactive programming environment. 
 The functional approach used for the implementation of ``FSharpGephiStreamer`` provides a 
@@ -55,5 +53,8 @@ software project. Hence, effectively improving the integration of ``Gephi`` into
 scale data analysis pipelines and increasing workflow reproducibility.
 
 ![WorkflowOverview](workflowOverview.png)
+
+**Figure 1**: Schematic overview of how F# and Gephi contribute to the network science workflow. 
+FSharpGephiStreamer acts as an merging interface at their overlap, mapping node/edge data to a gephi model.
 
 # References
