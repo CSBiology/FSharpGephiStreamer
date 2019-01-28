@@ -1,67 +1,32 @@
 (*** hide ***)
 // This block of code is omitted in the generated HTML documentation. Use 
 // it to define helpers that you do not want to show in the documentation.
-#I "../../bin"
+#I "../../bin/FSharpGephiStreamer/net47"
 
 (**
-FSharpGephiStreamer
-======================
+# FSharpGephiStreamer
 
-Documentation
+FSharpGephiStreamer is intended to close the gap between F# and the functionality of the [Gephi software project](https://gephi.org/), integrating network visualization
+power of gephi into any kind of data science workflow designed in F#. It leverages the functionality of the [graph streaming plugin](https://gephi.org/plugins/#/plugin/graphstreaming) of the It uses a short Grammar which makes it possible to convert any
+kind of Object to nodes and any kind of relationship between these objects to edges of a graph. This is especially useful because network 
+science is independent from specific data structures/types.
 
-<div class="row">
-  <div class="span1"></div>
-  <div class="span6">
-    <div class="well well-small" id="nuget">
-      The FSharpGephiStreamer library can be <a href="https://nuget.org/packages/FSharpGephiStreamer">installed from NuGet</a>:
-      <pre>PM> Install-Package FSharpGephiStreamer</pre>
-    </div>
-  </div>
-  <div class="span1"></div>
-</div>
+![WorkflowOverview](./img/workflowOverview.png)
 
-Example
--------
+# Ressources
 
-This example demonstrates using a function defined in this sample library.
+## Installation
 
-*)
-#r "FSharpGephiStreamer.dll"
-open FSharpGephiStreamer
+See how to [setup FSharpGephiStreamer](InstallationInstructions.html)
 
-printfn "hello = %i" <| Library.hello 0
+## Docs
 
-(**
-Some more info
+ * See how to [convert any kind of nodes/edges](Grammar.html) to gephi readable objects using the `Grammar` module
+ * See how to [stream graph data to gephi](Streaming.html)
+ * Check out the [API Reference](https://csbiology.github.io/FSharpGephiStreamer/reference/index.html) for information about types/functions in this library
 
-Samples & documentation
------------------------
+## Examples
 
-The library comes with comprehensible documentation. 
-It can include tutorials automatically generated from `*.fsx` files in [the content folder][content]. 
-The API reference is automatically generated from Markdown comments in the library implementation.
+ * [Exploratory analysis of the Gene Ontology knowledgebase](exampleAnalysis.html)
 
- * [Tutorial](tutorial.html) contains a further explanation of this sample library.
-
- * [API Reference](reference/index.html) contains automatically generated documentation for all types, modules
-   and functions in the library. This includes additional brief samples on using most of the
-   functions.
- 
-Contributing and copyright
---------------------------
-
-The project is hosted on [GitHub][gh] where you can [report issues][issues], fork 
-the project and submit pull requests. If you're adding a new public API, please also 
-consider adding [samples][content] that can be turned into a documentation. You might
-also want to read the [library design notes][readme] to understand how it works.
-
-The library is available under Public Domain license, which allows modification and 
-redistribution for both commercial and non-commercial purposes. For more information see the 
-[License file][license] in the GitHub repository. 
-
-  [content]: https://github.com/fsprojects/FSharpGephiStreamer/tree/master/docs/content
-  [gh]: https://github.com/fsprojects/FSharpGephiStreamer
-  [issues]: https://github.com/fsprojects/FSharpGephiStreamer/issues
-  [readme]: https://github.com/fsprojects/FSharpGephiStreamer/blob/master/README.md
-  [license]: https://github.com/fsprojects/FSharpGephiStreamer/blob/master/LICENSE.txt
 *)

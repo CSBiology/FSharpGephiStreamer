@@ -1,5 +1,6 @@
 ﻿namespace FSharpGephiStreamer
 
+///Helper functions to create and convert JSON objects/properties
 module JsonObject =
     
     open Newtonsoft.Json.Linq

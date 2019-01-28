@@ -93,11 +93,11 @@ let project = "FSharpGephiStreamer"
 
 // Short summary of the project
 // (used as description in AssemblyInfo and as a short summary for NuGet package)
-let summary = "FSharp functions for streaming graph data to gephi a graph visualization tool"
+let summary = "F# functions for streaming any kind of graph/network data to the network visualization tool gephi"
 
 // Longer description of the project
 // (used as a description for NuGet package; line breaks are automatically cleaned up)
-let description = "FSharp functions for streaming graph data to gephi a graph visualization tool"
+let description = "F# functions for streaming any kind of graph/network data to the network visualization tool gephi"
 
 // List of author names (for NuGet package)
 let author = "Timo Mühlhaus"
@@ -375,13 +375,15 @@ Target.create "Docs" (fun _ ->
             | Some lang -> layoutRootsAll.[lang]
             | None -> layoutRootsAll.["en"] // "en" is the default language
 
-        FSFormatting.createDocs (fun args ->
+        createDocs (fun args ->
             { args with
                 Source = content
                 OutputDirectory = output
                 LayoutRoots = layoutRoots
                 ProjectParameters  = ("root", root)::info
-                Template = docTemplate } )
+                Template = docTemplate 
+                FsiEval = true
+                } )
 )
 
 // --------------------------------------------------------------------------------------

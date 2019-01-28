@@ -21,14 +21,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project", "project", "{BF60
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{83F16175-43B1-4C90-A1EE-8E351C33435D}"
 	ProjectSection(SolutionItems) = preProject
+		docsrc\files\styles\CSBStyles.css = docsrc\files\styles\CSBStyles.css
 		docsrc\tools\generate.fsx = docsrc\tools\generate.fsx
 		docsrc\tools\templates\template.cshtml = docsrc\tools\templates\template.cshtml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{8E6D5255-776D-4B61-85F9-73C37AA1FB9A}"
 	ProjectSection(SolutionItems) = preProject
+		docsrc\content\exampleAnalysis.fsx = docsrc\content\exampleAnalysis.fsx
+		docsrc\content\Grammar.fsx = docsrc\content\Grammar.fsx
 		docsrc\content\index.fsx = docsrc\content\index.fsx
-		docsrc\content\tutorial.fsx = docsrc\content\tutorial.fsx
+		docsrc\content\InstallationInstructions.fsx = docsrc\content\InstallationInstructions.fsx
+		docsrc\content\Streaming.fsx = docsrc\content\Streaming.fsx
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{ED8079DD-2B06-4030-9F0F-DC548F98E1C4}"
@@ -40,7 +44,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{078A9C52-DDC
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
+		.github\CONTRIBUTING.md = .github\CONTRIBUTING.md
 		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
+		LICENSE.txt = LICENSE.txt
 		PULL_REQUEST_TEMPLATE.md = PULL_REQUEST_TEMPLATE.md
 	EndProjectSection
 EndProject

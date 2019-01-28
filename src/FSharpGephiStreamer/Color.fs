@@ -1,20 +1,24 @@
 ﻿namespace FSharpGephiStreamer
 
+///Functions and types for color coding, decoding and conversions of hex colors
 module Hex =
     
     open System
 
+    ///Converts integer to hex based character (e.g. 1 -> '1', 11 -> 'B')
     [<CompiledName("ToHexDigit")>]
     let toHexDigit n =
         if n < 10 then char (n + 0x30) else char (n + 0x37)
     
+    ///Converts a hex based character to an integer (e.g. '1' -> 1, 'B' -> 11)
     [<CompiledName("FromHexDigit")>]
     let fromHexDigit c =
         if c >= '0' && c <= '9' then int c - int '0'
         elif c >= 'A' && c <= 'F' then (int c - int 'A') + 10
         elif c >= 'a' && c <= 'f' then (int c - int 'a') + 10
         else raise <| new ArgumentException()
-        
+    
+    ///Encodes a color byte array to a hex string with the given prefix 
     [<CompiledName("Encode")>]
     let encode (prefix:string) (color:byte array)  =
         let hex = Array.zeroCreate (color.Length * 2)
@@ -29,6 +33,7 @@ module Hex =
 //        else new String(hex)
             
     [<CompiledName("Decode")>]
+    ///Decodes a color byte array from a hex string
     let decode (s:string) =
         match s with
         | null -> nullArg "s"
@@ -50,7 +55,7 @@ module Hex =
                 buf
 
 //http://www.niwa.nu/2013/05/math-behind-colorspace-conversions-rgb-hsl/
-/// Represents an ARGB (alpha, red, green, blue) color
+///Module to create and manipulate ARGB colors
 module Colors =
     
     /// Color component ARGB
@@ -60,6 +65,7 @@ module Colors =
         | G of byte
         | B of byte 
     
+    /// returns the value hold by a color component
     let getValueFromCC cc =
         match cc with
         | A v -> v
@@ -67,7 +73,7 @@ module Colors =
         | G v -> v
         | B v -> v
 
-    /// Color structure
+    ///Represents an ARGB (alpha, red, green, blue) color
     type Color = {
         /// The alpha component value of this Color structure.
         A : byte
@@ -79,18 +85,19 @@ module Colors =
         B : byte
         }
 
-    
+    ///returns the maximum value of the R, G, and B components of a color
     let maxRGB c =
         let r,g,b = R c.R,G c.G,B c.B
         max r g |> max b
 
+    ///returns the minimum value of the R, G, and B components of a color
     let minRGB c =
         let r,g,b = R c.R,G c.G,B c.B
         min r g |> min b
         
 
 
-    /// Creates a Color structure from the four ARGB component (alpha, red, green, and blue) values.
+    /// Creates a Color structure from the four ARGB components (alpha, red, green, and blue) values.
     let fromArgb a r g b =
         let f v =
             if v < 0 || v > 255 then 
@@ -99,7 +106,7 @@ module Colors =
                 byte v
         {A= f a; R = f r; G = f g; B = f b}
 
-    /// Creates a Color structure from the specified color values (red, green, and blue).
+    /// Creates a Color structure from the specified color component values (red, green, and blue).
     /// The alpha value is implicitly 255 (fully opaque). 
     let fromRgb r g b =
         fromArgb 255 r g b
@@ -107,7 +114,7 @@ module Colors =
 //    /// Gets the hue-saturation-brightness (HSB) brightness value for this Color structure.
 //    let getBrightness = ()
 
-    /// Gets the hue-saturation-brightness (HSB) hue value, in degrees, for this Color structure.
+    /// Gets the hue component value of the hue-saturation-brightness (HSB) format, in degrees, for this Color structure.
     let getHue c =
         let min = minRGB c |> getValueFromCC
         match maxRGB c with
@@ -117,7 +124,7 @@ module Colors =
         | _   -> failwithf "" // can't be
 
 
-    /// Gets the hue-saturation-brightness (HSB) saturation value for this Color structure.
+    /// Gets the saturation component value of the hue-saturation-brightness (HSB) format for this Color structure.
     let getSaturation col =
         let minimum = minRGB col
         let maximum = maxRGB col
@@ -159,6 +166,7 @@ module Colors =
     
     
     // http://graphicdesign.stackexchange.com/questions/3682/where-can-i-find-a-large-palette-set-of-contrasting-colors-for-coloring-many-d
+    ///Predefined colors
     module Table =    
 
         let black       = fromRgb   0   0   0                
@@ -197,7 +205,64 @@ module Colors =
 
         // From publication: Escaping RGBland: Selecting Colors for Statistical Graphics
         // http://epub.wu.ac.at/1692/1/document.pdf
+        ///Scientifically proven well distinguishable colors (http://epub.wu.ac.at/1692/1/document.pdf)
         module StatisticalGraphics24 =
-            let a = 1
         // 
-        //{2,63,165},{125,135,185},{190,193,212},{214,188,192},{187,119,132},{142,6,59},{74,111,227},{133,149,225},{181,187,227},{230,175,185},{224,123,145},{211,63,106},{17,198,56},{141,213,147},{198,222,199},{234,211,198},{240,185,141},{239,151,8},{15,207,192},{156,222,214},{213,234,231},{243,225,235},{246,196,225},{247,156,212}
+            let Blue1       = fromRgb   2  63 165
+            let Blue2       = fromRgb 125 135 185
+            let Blue3       = fromRgb 190 193 212
+            let Red1        = fromRgb 214 188 192
+            let Red2        = fromRgb 187 119 132
+            let Red3        = fromRgb 142   6  59
+            let LightBlue1  = fromRgb  74 111 227
+            let LightBlue2  = fromRgb 133 149 225
+            let LightBlue3  = fromRgb 181 187 227
+            let LightRed1   = fromRgb 230 175 185
+            let LightRed2   = fromRgb 224 123 145
+            let LightRed3   = fromRgb 211  63 106
+            let Green1      = fromRgb  17 198  56
+            let Green2      = fromRgb 141 213 147
+            let Green3      = fromRgb 198 222 199
+            let Orange1     = fromRgb 234 211 198
+            let Orange2     = fromRgb 240 185 141
+            let Orange3     = fromRgb 239 151   8
+            let Cyan1       = fromRgb  15 207 192
+            let Cyan2       = fromRgb 156 222 214
+            let Cyan3       = fromRgb 213 234 231
+            let Magenta1    = fromRgb 243 225 235
+            let Magenta2    = fromRgb 246 196 225
+            let Magenta3    = fromRgb 247 156 212
+
+            let private rand = new System.Random()
+
+            let private paletteArray =
+                [|
+                    Blue1     
+                    Blue2     
+                    Blue3     
+                    Red1      
+                    Red2      
+                    Red3      
+                    LightBlue1
+                    LightBlue2
+                    LightBlue3
+                    LightRed1 
+                    LightRed2 
+                    LightRed3 
+                    Green1    
+                    Green2    
+                    Green3    
+                    Orange1   
+                    Orange2   
+                    Orange3   
+                    Cyan1     
+                    Cyan2     
+                    Cyan3     
+                    Magenta1  
+                    Magenta2  
+                    Magenta3  
+                |]
+            
+            let getRandomColor() =
+                let index = rand.Next(0,23)
+                paletteArray.[index]
