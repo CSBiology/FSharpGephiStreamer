@@ -23,7 +23,7 @@ See how to [setup FSharpGephiStreamer](InstallationInstructions.html)
 
  * See how to [convert any kind of nodes/edges](Grammar.html) to gephi readable objects using the `Grammar` module
  * See how to [stream graph data to gephi](Streaming.html)
- * Check out the [API Reference](/reference/index.html) for information about types/functions in this library
+ * Check out the [API Reference](https://csbiology.github.io/FSharpGephiStreamer/reference/index.html) for information about types/functions in this library
 
 ## Examples
 
