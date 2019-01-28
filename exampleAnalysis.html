@@ -465,7 +465,7 @@ The overall modularity of the network with a resolution of 3 is 0.89 (high modul
 <div class="tip" id="fs62">val addOboNode : node:GONode -&gt; Either&lt;string,RestfulAux.Error&gt;</div>
 <div class="tip" id="fs63">val nodeConverter : (GONode -&gt; Grammar.Attribute list)</div>
 <div class="tip" id="fs64">module Grammar<br /><br />from FSharpGephiStreamer</div>
-<div class="tip" id="fs65">type Attribute =<br />&#160;&#160;| Size of float<br />&#160;&#160;| Color of Color<br />&#160;&#160;| EdgeType of EdgeDirection<br />&#160;&#160;| PositionX of float<br />&#160;&#160;| PositionY of float<br />&#160;&#160;| PositionZ of float<br />&#160;&#160;| Label of string<br />&#160;&#160;| UserDef of string * obj</div>
+<div class="tip" id="fs65">type Attribute =<br />&#160;&#160;| Size of float<br />&#160;&#160;| Color of Color<br />&#160;&#160;| EdgeType of EdgeDirection<br />&#160;&#160;| PositionX of float<br />&#160;&#160;| PositionY of float<br />&#160;&#160;| PositionZ of float<br />&#160;&#160;| Label of string<br />&#160;&#160;| LabelSize of float<br />&#160;&#160;| LabelColor of Color<br />&#160;&#160;| LabelVisible of bool<br />&#160;&#160;...</div>
 <div class="tip" id="fs66">union case Grammar.Attribute.Label: string -&gt; Grammar.Attribute</div>
 <div class="tip" id="fs67">val sprintf : format:Printf.StringFormat&lt;&#39;T&gt; -&gt; &#39;T</div>
 <div class="tip" id="fs68">union case Grammar.Attribute.Size: float -&gt; Grammar.Attribute</div>

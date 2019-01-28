@@ -138,7 +138,7 @@ the label, size, color, and data of the <code>MyNode</code> type and the size, e
 <div class="tip" id="fs15">val nodeConverter : node:MyNode -&gt; Grammar.Attribute list<br /><em><br /><br />converts a MyNode type to a list of grammar attributes</em></div>
 <div class="tip" id="fs16">val node : MyNode</div>
 <div class="tip" id="fs17">module Grammar<br /><br />from FSharpGephiStreamer</div>
-<div class="tip" id="fs18">type Attribute =<br />&#160;&#160;| Size of float<br />&#160;&#160;| Color of Color<br />&#160;&#160;| EdgeType of EdgeDirection<br />&#160;&#160;| PositionX of float<br />&#160;&#160;| PositionY of float<br />&#160;&#160;| PositionZ of float<br />&#160;&#160;| Label of string<br />&#160;&#160;| UserDef of string * obj</div>
+<div class="tip" id="fs18">type Attribute =<br />&#160;&#160;| Size of float<br />&#160;&#160;| Color of Color<br />&#160;&#160;| EdgeType of EdgeDirection<br />&#160;&#160;| PositionX of float<br />&#160;&#160;| PositionY of float<br />&#160;&#160;| PositionZ of float<br />&#160;&#160;| Label of string<br />&#160;&#160;| LabelSize of float<br />&#160;&#160;| LabelColor of Color<br />&#160;&#160;| LabelVisible of bool<br />&#160;&#160;...</div>
 <div class="tip" id="fs19">union case Grammar.Attribute.Label: string -&gt; Grammar.Attribute</div>
 <div class="tip" id="fs20">union case Grammar.Attribute.Size: float -&gt; Grammar.Attribute</div>
 <div class="tip" id="fs21">union case Grammar.Attribute.Color: Colors.Color -&gt; Grammar.Attribute</div>
