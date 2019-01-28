@@ -36,8 +36,7 @@ information spaces and create complex repeatable workflows exceeds the capabilit
 automation features in any point-and-click-based network visualization and analysis
 software available. The functional-first programming languages F# is specialized for
 type save information-rich programming and domain driven explorative programming
-[@leveraging-net-meta-programming-components-from-f-integrated-queries-and-interoperable-heterogeneous-execution]
-[@inforich-ddfp]. This enables data collection, processing and analysis
+[@Syme.2006] [@Syme.2013]. This enables data collection, processing and analysis
 tasks leveraging the flexibility of the programming environments.
 
 We created ``FSharpGephiStreamer`` to enable automated access to the ``Gephi`` network and 
