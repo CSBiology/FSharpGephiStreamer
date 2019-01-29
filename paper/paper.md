@@ -53,7 +53,7 @@ scale data analysis pipelines and increasing workflow reproducibility.
 
 ![WorkflowOverview](workflowOverview.png)
 
-**Figure 1**: Figure 1: Schematic overview of an interactive network analysis and visualization
+**Figure 1**: Schematic overview of an interactive network analysis and visualization
 workflow using F# and Gephi. FSharpGephiStreamer interfaces with Gephi and allows the direct streaming of
 node and edge data into the Gephi network model.
 
