@@ -1,4 +1,4 @@
-Thank you for contributing to BioFSharp. Please take the time to tell us a bit more about your PR.
+Thank you for contributing to FSharpGephiStreamer. Please take the time to tell us a bit more about your PR.
 
 **Please reference the issue(s) this PR is related to**
 
