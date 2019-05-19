@@ -231,14 +231,18 @@ let readFromFile (file:string) =
 let nodes = 
     readFromFile (__SOURCE_DIRECTORY__ + "/data/goNodeList.csv") 
     |> List.ofSeq
+    //Skip the header line of the csv file
+    |> List.skip 1
     |> List.map (fun n -> let tmp = n.Split([|','|])
-                          createGONode tmp.[0] tmp.[1] tmp.[2] (Colors.Table.StatisticalGraphics24.getRandomColor()))
+                          createGONode tmp.[0] tmp.[1] tmp.[2] (Colors.Table.StatisticalGraphics24.getRandomColor())) 
 
 let edges = 
     readFromFile (__SOURCE_DIRECTORY__ + "/data/goEdgeList.csv") |> List.ofSeq
     |> List.ofSeq
+    //Skip the header line of the csv file
+    |> List.skip 1
     |> List.map (fun n -> let tmp = n.Split([|','|])
-                          createGOEdge (tmp.[0] |> int) tmp.[1] tmp.[2] (nodes |> List.find(fun n -> n.Id = tmp.[2])).Color)
+                          createGOEdge (tmp.[0] |> int) tmp.[1] tmp.[2] (nodes |> List.find(fun n -> n.Id = tmp.[2])).Color) // this will take some time but ensures that edges have the same color as target nodes.
 (**
 
 # Results
