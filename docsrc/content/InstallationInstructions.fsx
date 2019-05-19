@@ -12,6 +12,12 @@ let usrConfig = sprintf "http://%s:%i/%s/?operation=updateGraph" a b c
 (**
 #Installation instructions
 
+##FSharp
+
+First of all, a working installation of F# is required. Head over to [fsharp.org](https://fsharp.org/) for detailed installation instructions for your OS
+
+##Gephi
+
 The following steps are necessary to stream graph data from F# interactive to gephi:
 
  1. Install [Java](https://www.java.com/en/download/) and [JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
