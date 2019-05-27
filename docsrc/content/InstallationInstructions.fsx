@@ -21,7 +21,12 @@ First of all, a working installation of F# is required. Head over to [fsharp.org
 The following steps are necessary to stream graph data from F# interactive to gephi:
 
  1. Install [Java](https://www.java.com/en/download/) and [JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+    - Alternatively, if you want to use a jdk with a permissive license you can also use [OpenJDK](https://adoptopenjdk.net/). 
  2. Install [Gephi](https://gephi.org/users/install/)
+    - If you use OpenJDK, you have to ensure gephi knows its installation location:
+      - go to `C:\Program Files\Gephi-0.9.2\etc\gephi.conf`
+      - uncomment the following line: `jdkhome="path/to/jdk"` 
+      - replace the path with your openJDK installation path (usually `C:\Program Files\AdoptOpenJDK\jdk-8.0.212.03-hotspot` )
  3. Install [Graph streaming plugin](https://gephi.org/plugins/#/plugin/graphstreaming) in gephi:
 
 ![](./img/pluginInstallation.jpg)
