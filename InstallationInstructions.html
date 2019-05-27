@@ -39,8 +39,25 @@
 <h2><a name="Gephi" class="anchor" href="#Gephi">Gephi</a></h2>
 <p>The following steps are necessary to stream graph data from F# interactive to gephi:</p>
 <ol>
-<li>Install <a href="https://www.java.com/en/download/">Java</a> and <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK</a></li>
-<li>Install <a href="https://gephi.org/users/install/">Gephi</a></li>
+<li>
+Install <a href="https://www.java.com/en/download/">Java</a> and <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">JDK</a>
+<ul>
+<li>Alternatively, if you want to use a jdk with a permissive license you can also use <a href="https://adoptopenjdk.net/">OpenJDK</a>.</li>
+</ul>
+</li>
+<li>
+Install <a href="https://gephi.org/users/install/">Gephi</a>
+<ul>
+<li>
+If you use OpenJDK, you have to ensure gephi knows its installation location:
+<ul>
+<li>go to <code>C:\Program Files\Gephi-0.9.2\etc\gephi.conf</code></li>
+<li>uncomment the following line: <code>jdkhome="path/to/jdk"</code></li>
+<li>replace the path with your openJDK installation path (usually <code>C:\Program Files\AdoptOpenJDK\jdk-8.0.212.03-hotspot</code> )</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Install <a href="https://gephi.org/plugins/#/plugin/graphstreaming">Graph streaming plugin</a> in gephi:</li>
 </ol>
 <p><img src="./img/pluginInstallation.jpg" alt="" /></p>
