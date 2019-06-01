@@ -22,7 +22,7 @@ without the need of any UI interaction but the starting of the streaming server.
 Prerequisites
 =============
 
-A local installation of Java, Gephi and the Graph Streaming plugin is necessary. See [here](https://csbiology.github.io/FSharpGephiStreamer/InstallationInstructions.html) for more indepht installation instructions.
+A local installation of Java, Gephi and the Graph Streaming plugin is necessary. See [here](https://csbiology.github.io/FSharpGephiStreamer/InstallationInstructions.html) for more indepth installation instructions.
 
 Documentation
 =============
