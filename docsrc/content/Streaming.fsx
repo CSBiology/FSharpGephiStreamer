@@ -9,7 +9,10 @@ open FSharpGephiStreamer
 Streaming a graph to gephi 
 ==========================
 
-First of all, you need to enable the master server of the graph streaming plugin in gephin (using default settings):
+First of all, you need to enable the master server of the graph streaming plugin in gephi (using default settings):
+
+The next step is the creation of a workspace in Gephi. If you name it other than the default name (Workspace 1), 
+make sure you adjust the streamer environment as shown [here](https://csbiology.github.io/FSharpGephiStreamer/InstallationInstructions.html#Streamer environment setup)
 
 Given the following node/edge types and converters introduced in the [`Grammar` docs](Grammar.html)
 
