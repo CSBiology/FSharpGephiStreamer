@@ -35,6 +35,8 @@ The following steps are necessary to stream graph data from F# interactive to ge
 
 ![](./img/gephiStreamingServer.gif)
 
+##Streamer environment setup
+
 If you want to use another connection than the default connection, you can use the `Streamer.setEnvironment` function to do so:
 *)
 

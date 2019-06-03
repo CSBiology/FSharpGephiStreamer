@@ -1,23 +1,23 @@
-type file
+type project
 id FSharpGephiStreamer
 title
     FSharpGephiStreamer
 owners
     Timo Mühlhaus
 authors 
-    Timo Mühlhaus
+    Timo Mühlhaus, Kevin Schneider
 projectUrl
     https://github.com/CSBiology/FSharpGephiStreamer
 iconUrl
-    https://raw.githubusercontent.com/CSBiology/FSharpGephiStreamer/master/docs/files/img/logo.png
+    https://raw.githubusercontent.com/CSBiology/FSharpGephiStreamer/master/docsrc/files/img/logo.png
 licenseUrl
-    https://github.com/CSBiology/FSharpGephiStreamer/blob/master/LICENSE.txt
+    https://github.com/CSBiology/FSharpGephiStreamer/blob/master/LICENSE
 requireLicenseAcceptance
     false
 language
     F#
 copyright
-    Copyright 2017
+    Copyright 2019
 tags
     FSharp F# graph visualization GephiStreamer
 summary

@@ -65,44 +65,10 @@ The full ontology can be downloaded [here](http://purl.obolibrary.org/obo/go.obo
 The data was originally parsed using the Obo parser from our bioinformatics toolbox [BioFSharp](https://github.com/CSBiology/BioFSharp). if you want to see the code , expand the section below. However, 
 to avoid dependencies and assure reproducibility of this tutorial the data was also prepared to be usable without any dependency other than FSharpGephiStreamer itself.
 The Node and Edgelists can be found as .csv files [here](https://github.com/CSBiology/FSharpGephiStreamer/tree/master/docsrc/content/data). 
-If you want to reproduce this analysis, just parse these files and construct the node and edge types from them. Just keep in mind that you loose a lot of information contained in the obo file that way, 
+If you want to reproduce this analysis, just parse these files and construct the node and edge types from them. Just keep in mind that you lose a lot of information contained in the obo file that way, 
 as the csv files only contains term names and is-A relationships 
 
-Parsing the csv files can be done without dependencies using this code:
-
-<button type="button" class="btn" data-toggle="collapse" data-target="#CsvParse">Show csv parsing code</button>
-<div id="CsvParse" class="collapse fileExamples ">
 *)
-
-(*** include:csvSample ***)
-
-
-(**
-
-</div>
-
-*)
-
-(**
-###Data aquisition
-
-First we parse the .obo file using BioFSharps Obo parser:
-
-*)
-
-open FSharpAux
-open FSharpAux.IO
-open BioFSharp
-open BioFSharp.IO
-open BioFSharp.IO.Obo
-
-let readFile path =
-    FileIO.readFile path
-    |> Obo.parseOboTerms
-    |> Seq.toList
-
-(***do-not-eval***)
-let goObo = readFile @"go.obo"
 
 (** 
 
@@ -150,6 +116,65 @@ type GOEdge = {
 
 /// Creates GOEdge
 let createGOEdge i source target tc = {Id = i; Source = source; Target = target; TargetColor = tc}
+
+
+(**
+###Data aquisition
+
+First we parse the .obo file using BioFSharps Obo parser:
+
+Parsing the csv files can be done without dependencies using this code:
+
+<button type="button" class="btn" data-toggle="collapse" data-target="#CsvParse">Show csv parsing code</button>
+<div id="CsvParse" class="collapse fileExamples ">
+*)
+
+open System.IO
+open System.Text
+
+let readFromFile (file:string) =
+        seq {use textReader = new StreamReader(file, Encoding.Default)
+             while not textReader.EndOfStream do
+                 yield textReader.ReadLine()}
+
+let nodes = 
+    readFromFile (__SOURCE_DIRECTORY__ + "/data/goNodeList.csv") 
+    |> List.ofSeq
+    //Skip the header line of the csv file
+    |> List.skip 1
+    |> List.map (fun n -> let tmp = n.Split([|','|])
+                          createGONode tmp.[0] tmp.[1] tmp.[2] (Colors.Table.StatisticalGraphics24.getRandomColor())) 
+
+let edges = 
+    readFromFile (__SOURCE_DIRECTORY__ + "/data/goEdgeList.csv") |> List.ofSeq
+    |> List.ofSeq
+    //Skip the header line of the csv file
+    |> List.skip 1
+    |> List.map (fun n -> let tmp = n.Split([|','|])
+                          createGOEdge (tmp.[0] |> int) tmp.[1] tmp.[2] (nodes |> List.find(fun n -> n.Id = tmp.[2])).Color) // this will take some time but ensures that edges have the same color as target nodes.
+
+
+(**
+
+</div>
+
+*)
+
+
+open FSharpAux
+open FSharpAux.IO
+open BioFSharp
+open BioFSharp.IO
+open BioFSharp.IO.Obo
+
+let readFile path =
+    FileIO.readFile path
+    |> Obo.parseOboTerms
+    |> Seq.toList
+
+(***do-not-eval***)
+let goObo = readFile @"go.obo"
+
 
 
 ///Node list containing all GO terms
@@ -210,39 +235,27 @@ let addOboEdge (edge:GOEdge) =
     
     Streamer.addEdge edgeConverter edge.Id edge.Source edge.Target edge
 
+(**
+To stream the nodes and edges to gephi, we use the addNode/addEdge functions on the list of nodes/edges:
+*)
 
+(***do-not-eval***)
 goNodes |> List.map addOboNode
 goEdges |> List.map addOboEdge
+
+(**
+Alternatively, when using the data parsed from the provided csv files:
+*)
+
+(***do-not-eval***)
+nodes |> List.map addOboNode
+edges |> List.map addOboEdge
 
 (**
 Thats it. in roughly 40 lines of code we streamed a complete knowledge graph with 47345 nodes and 77187 edges to gephi. The network is now ready to be explored.
 
 *)
 
-(*** define:csvSample***)
-open System.IO
-open System.Text
-
-let readFromFile (file:string) =
-        seq {use textReader = new StreamReader(file, Encoding.Default)
-             while not textReader.EndOfStream do
-                 yield textReader.ReadLine()}
-
-let nodes = 
-    readFromFile (__SOURCE_DIRECTORY__ + "/data/goNodeList.csv") 
-    |> List.ofSeq
-    //Skip the header line of the csv file
-    |> List.skip 1
-    |> List.map (fun n -> let tmp = n.Split([|','|])
-                          createGONode tmp.[0] tmp.[1] tmp.[2] (Colors.Table.StatisticalGraphics24.getRandomColor())) 
-
-let edges = 
-    readFromFile (__SOURCE_DIRECTORY__ + "/data/goEdgeList.csv") |> List.ofSeq
-    |> List.ofSeq
-    //Skip the header line of the csv file
-    |> List.skip 1
-    |> List.map (fun n -> let tmp = n.Split([|','|])
-                          createGOEdge (tmp.[0] |> int) tmp.[1] tmp.[2] (nodes |> List.find(fun n -> n.Id = tmp.[2])).Color) // this will take some time but ensures that edges have the same color as target nodes.
 (**
 
 # Results

@@ -5,8 +5,8 @@ open System.Reflection
 [<assembly: AssemblyTitleAttribute("FSharpGephiStreamer")>]
 [<assembly: AssemblyProductAttribute("FSharpGephiStreamer")>]
 [<assembly: AssemblyDescriptionAttribute("F# functions for streaming any kind of graph/network data to the network visualization tool gephi")>]
-[<assembly: AssemblyVersionAttribute("1.1.0")>]
-[<assembly: AssemblyFileVersionAttribute("1.1.0")>]
+[<assembly: AssemblyVersionAttribute("1.1.1")>]
+[<assembly: AssemblyFileVersionAttribute("1.1.1")>]
 [<assembly: AssemblyConfigurationAttribute("Release")>]
 do ()
 
@@ -14,6 +14,6 @@ module internal AssemblyVersionInformation =
     let [<Literal>] AssemblyTitle = "FSharpGephiStreamer"
     let [<Literal>] AssemblyProduct = "FSharpGephiStreamer"
     let [<Literal>] AssemblyDescription = "F# functions for streaming any kind of graph/network data to the network visualization tool gephi"
-    let [<Literal>] AssemblyVersion = "1.1.0"
-    let [<Literal>] AssemblyFileVersion = "1.1.0"
+    let [<Literal>] AssemblyVersion = "1.1.1"
+    let [<Literal>] AssemblyFileVersion = "1.1.1"
     let [<Literal>] AssemblyConfiguration = "Release"
