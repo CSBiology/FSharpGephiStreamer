@@ -65,7 +65,7 @@ The full ontology can be downloaded [here](http://purl.obolibrary.org/obo/go.obo
 The data was originally parsed using the Obo parser from our bioinformatics toolbox [BioFSharp](https://github.com/CSBiology/BioFSharp). if you want to see the code , expand the section below. However, 
 to avoid dependencies and assure reproducibility of this tutorial the data was also prepared to be usable without any dependency other than FSharpGephiStreamer itself.
 The Node and Edgelists can be found as .csv files [here](https://github.com/CSBiology/FSharpGephiStreamer/tree/master/docsrc/content/data). 
-If you want to reproduce this analysis, just parse these files and construct the node and edge types from them. Just keep in mind that you loose a lot of information contained in the obo file that way, 
+If you want to reproduce this analysis, just parse these files and construct the node and edge types from them. Just keep in mind that you lose a lot of information contained in the obo file that way, 
 as the csv files only contains term names and is-A relationships 
 
 *)
