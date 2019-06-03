@@ -1,3 +1,6 @@
+#### 1.1.1 - June 3 2019
+ * fix paket.template - nuget pakage should now list all dependencies correctly
+
 #### 1.1.0 - January 27 2019
 * Re-realease under MIT Licence
 * Extended documentation
