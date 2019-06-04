@@ -32,6 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{8E6D
 		docsrc\content\Grammar.fsx = docsrc\content\Grammar.fsx
 		docsrc\content\index.fsx = docsrc\content\index.fsx
 		docsrc\content\InstallationInstructions.fsx = docsrc\content\InstallationInstructions.fsx
+		docsrc\content\SimpleNetwork.fsx = docsrc\content\SimpleNetwork.fsx
 		docsrc\content\Streaming.fsx = docsrc\content\Streaming.fsx
 	EndProjectSection
 EndProject
