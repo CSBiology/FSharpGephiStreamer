@@ -1,3 +1,7 @@
+#### 1.1.2 - June 3 2019
+ * further constrain Newtonsoft.Json and FSharp.Core dependencies
+
+
 #### 1.1.1 - June 3 2019
  * fix paket.template - nuget pakage should now list all dependencies correctly
 
