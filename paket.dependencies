@@ -2,8 +2,8 @@ framework: auto-detect
 
 source https://nuget.org/api/v2
 
-nuget FSharp.Core
-nuget Newtonsoft.Json
+nuget FSharp.Core >= 4.5.2 simplify: never
+nuget Newtonsoft.Json >= 11.0 simplify: never
 nuget Argu
 
 nuget Expecto
