@@ -79,7 +79,7 @@ gene function, and relationships between these concepts.</p>
 <p>The data was originally parsed using the Obo parser from our bioinformatics toolbox <a href="https://github.com/CSBiology/BioFSharp">BioFSharp</a>. if you want to see the code , expand the section below. However,
 to avoid dependencies and assure reproducibility of this tutorial the data was also prepared to be usable without any dependency other than FSharpGephiStreamer itself.
 The Node and Edgelists can be found as .csv files <a href="https://github.com/CSBiology/FSharpGephiStreamer/tree/master/docsrc/content/data">here</a>.
-If you want to reproduce this analysis, just parse these files and construct the node and edge types from them. Just keep in mind that you loose a lot of information contained in the obo file that way,
+If you want to reproduce this analysis, just parse these files and construct the node and edge types from them. Just keep in mind that you lose a lot of information contained in the obo file that way,
 as the csv files only contains term names and is-A relationships</p>
 <h3><a name="Preparing-nodes-and-edges" class="anchor" href="#Preparing-nodes-and-edges">Preparing nodes and edges</a></h3>
 <p>We define nodes as GO terms as our nodes and edges as Is-A relations between those terms. This will result in a network that shows how the knowledgebase is structured.
@@ -544,6 +544,7 @@ The overall modularity of the network with a resolution of 3 is 0.89 (high modul
             <li><a href="/FSharpGephiStreamer/Streaming.html">Streaming</a></li>
 
             <li class="nav-header">Examples</li>
+            <li><a href="/FSharpGephiStreamer/SimpleNetwork.html">Small basic example</a></li>
             <li><a href="/FSharpGephiStreamer/exampleAnalysis.html">Exploratory analysis of the Gene Ontology knowledgebase</a></li>
 
             <li class="nav-header">Documentation</li>
