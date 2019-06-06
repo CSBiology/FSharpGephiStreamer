@@ -4,6 +4,7 @@ source https://nuget.org/api/v2
 
 nuget FSharp.Core >= 4.5.2
 nuget Newtonsoft.Json >= 11.0
+nuget Http.fs
 nuget Argu
 
 nuget Expecto

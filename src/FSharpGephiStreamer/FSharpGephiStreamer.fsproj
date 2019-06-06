@@ -1,6 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net45;net47;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net47;netstandard2.0</TargetFrameworks>
     <RootNamespace>FSharpGephiStreamer</RootNamespace>
     <AssemblyName>FSharpGephiStreamer</AssemblyName>
     <Name>FSharpGephiStreamer</Name>
@@ -16,7 +16,6 @@
   <ItemGroup>
     <Compile Include="Color.fs" />
     <Compile Include="Either.fs" />
-    <Compile Include="Http.fs" />
     <Compile Include="JsonObject.fs" />
     <Compile Include="RestFulAux.fs" />
     <Compile Include="Grammar.fs" />
