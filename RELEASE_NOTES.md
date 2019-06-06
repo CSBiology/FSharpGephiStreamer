@@ -1,3 +1,6 @@
+#### 1.1.6 - June 6 2019
+ * Emulate nuget dependency resolvement
+
 #### 1.1.4 - June 6 2019
  * Use minimum matching approach to resolve transitive dependencies of packages
 
