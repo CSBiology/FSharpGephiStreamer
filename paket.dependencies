@@ -1,4 +1,5 @@
 framework: auto-detect
+strategy: min
 
 source https://nuget.org/api/v2
 

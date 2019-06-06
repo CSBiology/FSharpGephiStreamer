@@ -1,3 +1,6 @@
+#### 1.1.4 - June 6 2019
+ * Use minimum matching approach to resolve transitive dependencies of packages
+
 #### 1.1.3 - June 6 2019
  * Use Http.fs for management of HTTP requests
 
