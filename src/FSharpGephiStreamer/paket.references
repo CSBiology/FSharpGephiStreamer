@@ -1,2 +1,4 @@
-FSharp.Core
-Newtonsoft.Json
+group Streamer
+	FSharp.Core
+	Newtonsoft.Json
+	Http.fs

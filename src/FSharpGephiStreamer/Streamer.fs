@@ -4,7 +4,6 @@ module Streamer =
 
     open RestfulAux        
     open Grammar
-    open FSharp.Net
 
     /// Converter type to map from a custom node to a Grammar.Attribute list
     type NodeConverter<'node> = 'node -> Grammar.Attribute list

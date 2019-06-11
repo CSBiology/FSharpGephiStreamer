@@ -1,6 +1,14 @@
+#### 1.1.6 - June 6 2019
+ * Emulate nuget dependency resolvement
+
+#### 1.1.4 - June 6 2019
+ * Use minimum matching approach to resolve transitive dependencies of packages
+
+#### 1.1.3 - June 6 2019
+ * Use Http.fs for management of HTTP requests
+
 #### 1.1.2 - June 3 2019
  * further constrain Newtonsoft.Json and FSharp.Core dependencies
-
 
 #### 1.1.1 - June 3 2019
  * fix paket.template - nuget pakage should now list all dependencies correctly
