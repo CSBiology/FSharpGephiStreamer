@@ -1,7 +1,11 @@
-FSharpGephiStreamer
+FSharpGephiStreamer [![NuGet Badge](https://buildstats.info/nuget/FSharpGephiStreamer)](https://www.nuget.org/packages/FSharpGephiStreamer/) [![DOI](http://joss.theoj.org/papers/10.21105/joss.01445/status.svg)](https://doi.org/10.21105/joss.01445)
 ===================
 
-[![NuGet Badge](https://buildstats.info/nuget/FSharpGephiStreamer)](https://www.nuget.org/packages/FSharpGephiStreamer/)
+
+FSharpGephi streamer was accepted in [The Journal of Open Source Software (JOSS)](http://joss.theoj.org/papers/353e97af96ed27c448d32501fda34aed#) with version 1.1.6. If you use this software in your research, please cite:
+
+> Schneider et al., (2019). FSharpGephiStreamer: An idiomatic bridge between F# and network visualization. Journal of Open Source Software, 4(38), 1445, https://doi.org/10.21105/joss.01445
+
 
 F# functions for streaming any kind of graph/network data to the network visualization tool [gephi.](https://gephi.org/) <https://csbiology.github.io/FSharpGephiStreamer/>
 
